@@ -37,6 +37,119 @@
             <td>Az elsődleges vázlat és a struktúra kialakítása.</td> 
             <td>Baranyai Benedek</td> 
         </tr>
+        <tr> 
+            <td>2026-09-29</td> 
+            <td>1.1</td> 
+            <td>Az 1-7. pontok (fejlesztési terv, eszközök, produktumok, tesztelés, bemutatás, források) kidolgozása.</td> 
+            <td>Harik Zoltán Örs</td> 
+        </tr>
     </table>
+
+    <h2>Tartalomjegyzék:</h2>
+    <div class="content-box">
+        <ul>
+            <li><a href="#utemtervezes">1. Fejlesztési terv: Mérföldkövek és eredmények</a></li>
+            <li><a href="#hasznalt-nyelvek">2. Alkalmazott programozási nyelvek és IDE környezetek</a></li>
+            <li><a href="#alkalmazott-technikak">3. Választott technológiák és megoldások</a></li>
+            <li><a href="#jovobeli-fajlok">4. Leendő produktumok (dokumentumok), és létrejöttüknek ideje</a></li>
+            <li><a href="#minosegbiztositas">5. A szoftver tesztelésének szabályai</a></li>
+            <li><a href="#prezentacio">6. Az elkészült rendszer bemutatása és átadása</a></li>
+            <li><a href="#hasznos-linkek">7. Felhasznált irodalom és források</a></li>
+        </ul>
+    </div>
+
+    <a name="utemtervezes"></a><h2>1. Fejlesztési terv: Mérföldkövek</h2>
+    <div class="content-box">
+        <p>A projekt fejlesztését szakaszokra bontjuk a hatékony munkavégzés érdekében. A cél egy modern és biztonságos banki szoftver létrehozása.</p>
+        <ul>
+            <li style="margin-bottom: 15px;"><p><strong>1. Mérföldkő (3. hét): Weboldal létrehozása és verziókezelés</strong><br>
+            Csapatnév és téma rögzítése, a projekt bemutató weboldalának elkészítése, valamint a Git alapú verziókövetés beüzemelése.</p></li>
+            
+            <li style="margin-bottom: 15px;"><p><strong>2. Mérföldkő (6. hét): Tranzakciós és Számlakezelő Modul</strong><br>
+            Bankszámlák közötti belföldi utalások logikája, számlatörténet generálása. Számlák egyenlegének biztonságos kezelése.</p></li>
+            
+            <li style="margin-bottom: 15px;"><p><strong>3. Mérföldkő (9. hét): Pénzügyi és Valutaváltó Modul</strong><br>
+            Deviza számlák kezelése, külső árfolyam API integrálása a valós idejű konverzióhoz. Hiteligénylési űrlapok.</p></li>
+            
+            <li style="margin-bottom: 10px;"><p><strong>4. Mérföldkő (12. hét): Biztonsági és Riportolási Modul</strong><br>
+            Tranzakciók naplózása, ügyintézői statisztikák. Hibakeresés és a rendszer összehangolásának befejezése.</p></li>
+        </ul>
+    </div>
+
+    <a name="hasznalt-nyelvek"></a><h2>2. Alkalmazott programozási nyelvek és IDE környezetek</h2>
+    <div class="content-box">
+        <p>Pénzügyi környezetben a stabilitás kritikus szempont, ezért az alábbiakat fogjuk használni:</p>
+        <ul>
+            <li style="margin-bottom: 10px;"><p><strong>Szerveroldal:</strong> Java Spring Boot vagy Node.js az adatkezeléshez.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Kliensoldal:</strong> React és Tailwind CSS a megfelelő felhasználói élmény elérése érdekében.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Adatbáziskezelő:</strong> PostgreSQL a tranzakciós adatok biztonságos tárolására.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Fejlesztői szoftverek:</strong> IntelliJ IDEA, VS Code, WebStorm.</p></li>
+        </ul>
+    </div>
+
+    <a name="alkalmazott-technikak"></a><h2>3. Választott technológiák és megoldások</h2>
+    <div class="content-box">
+        <p>A biztonságos bankolás miatt szigorú elveket követünk a fejlesztés során:</p>
+        <ul>
+            <li style="margin-bottom: 10px;"><p><strong>Forráskód kezelés:</strong> Git repozitórium használata a közös munkához.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Fejlesztési elvek:</strong> Kanban és Scrum.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Biztonság:</strong> Bcrypt alapú jelszótitkosítás és JWT tokenes authentikáció.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Hálózati kommunikáció:</strong> REST API végpontok kialakítása a szerver és a kliens közt.</p></li>
+        </ul>
+    </div>
+
+    <a name="jovobeli-fajlok"></a><h2>4. Dokumentumok és létrejöttüknek ideje</h2>
+    <div class="content-box">
+        <p>A fejlesztés során több dokumentumot is előállítunk, amelyek a projekt átláthatóságát és karbantarthatóságát biztosítják.</p>
+        <ul>
+            <li style="margin-bottom: 15px;"><p><strong>Projekt Terv</strong><br>
+            Leírás: Meghatározza a projekt céljait, a fejlesztési fázisokat, a használt technológiákat és a verziókövetést.<br>
+            Létrejött: A projekt kezdeti fázisában (1-3. hét).</p></li>
+
+            <li style="margin-bottom: 15px;"><p><strong>Vízió dokumentum</strong><br>
+            Leírás: A webalkalmazás átfogó célja: egy komplex, modern banki és tranzakciós rendszer létrehozása. Tartalmazza az üzleti lehetőségeket, a felhasználói köröket és a minőségi elvárásokat.<br>
+            Létrejött:</p></li>
+
+            <li style="margin-bottom: 15px;"><p><strong>SRS (Szoftver Követelmény Specifikáció)</strong><br>
+            Leírás: Részletesen meghatározza a szoftver funkcionális (pl. utalás indítása, devizaváltás) és nem funkcionális (pl. JWT hitelesítés, adatbázis titkosítás) követelményeit.<br>
+            Létrejött:</p></li>
+
+            <li style="margin-bottom: 15px;"><p><strong>Analízis Modell</strong><br>
+            Leírás: Grafikus (UML) és szöveges modellekkel ábrázolja a rendszer belső felépítését és az adatok közötti kapcsolatokat még a kódolás előtt.<br>
+            Létrejött:</p></li>
+
+            <li style="margin-bottom: 10px;"><p><strong>Rendszer Tervezés (Technikai Terv)</strong><br>
+            Leírás: Meghatározza a rendszer technikai architektúráját, az API-k felépítését, az adatbázis sémát és a modulok közötti kommunikációt.<br>
+            Létrejött:</p></li>
+        </ul>
+    </div>
+
+    <a name="minosegbiztositas"></a><h2>5. A szoftver tesztelésének szabályai</h2>
+    <div class="content-box">
+        <p>Egy banki programnál elengedhetetlen a megfelelő ellenőrzés. Részleges, de alapos tesztelést tervezünk:</p>
+        <ul>
+            <li style="margin-bottom: 10px;"><p><strong>Kódszintű tesztek:</strong> A pénzmozgást kezelő logikák automatizált vizsgálata.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Biztonsági átvizsgálás:</strong> A hitelesítési folyamatok és a sérülékenységek ellenőrzése.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Integrációs ellenőrzés:</strong> Az adatbázis kapcsolatok és külső rendszerek tesztelése.</p></li>
+        </ul>
+    </div>
+
+    <a name="prezentacio"></a><h2>6. Az elkészült rendszer bemutatása és átadása</h2>
+    <div class="content-box">
+        <ul>
+            <li style="margin-bottom: 10px;"><p><strong>Bemutatás:</strong> Minden határidőnél egy öt perces szóbeli beszámolót tartunk a gyakorlaton az addig elkészült funkciókról.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Leadás:</strong> A forráskódot Git segítségével, a dokumentációkat pedig webes felületen adjuk át.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Végső határidő:</strong> A félév szorgalmi időszakának utolsó hete (H5).</p></li>
+        </ul>
+    </div>
+
+    <a name="hasznos-linkek"></a><h2>7. Források</h2>
+    <div class="content-box">
+        <ul>
+            <li style="margin-bottom: 10px;"><p><strong>Egyetemi tananyag:</strong> Dr. Mileff Péter hivatalos oldala és az általa kiadott követelmények.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>IDE és prog. nyelv dokumentáció:</strong> A fejlesztői környezetek és programozási nyelvek hivatalos dokumentációja.</p></li>
+            <li style="margin-bottom: 10px;"><p><strong>Valós piaci referencia:</strong> A nagy bankok oldalainak vizsgálata ihletképp.</p></li>
+        </ul>
+    </div>
 </body>
 </html>

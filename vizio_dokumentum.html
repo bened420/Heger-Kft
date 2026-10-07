@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>(H2) Vízió dokumentum</title>    
+</head>
+<body class="center-text">
+    <h1>A mi csapatunk: Heger Kft.</h1>
+    <h1>A választott téma: Banki szoftver</h1>
+
+    <h1 class="margin-block">(H2) Vízió dokumentum</h1>
+
+    <div class="margin-block">
+        Gyakorlatvezető oktató:
+        <h2>Sátán Ádám</h2>
+    </div>
+
+    <h2>Csoportunk tagjai:</h2>
+    <table>
+        <tr> <td>Baranyai Benedek</td> <td>BCOMKG</td> <td>benedek.baranyai@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Harik Zoltán Örs</td> <td>POZY70</td> <td>zoltan.ors.harik@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Radó Attila</td> <td>JX93VX</td> <td>attila.rado@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Ötvös Csongor</td> <td>RKOW9K</td> <td>csongor.otvos@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Csóka Nándor Gábor</td> <td>MDX9OH</td> <td>nandor.gabor.csoka@student.uni-miskolc.hu</td> </tr>
+    </table>
+
+    <div class="right-text margin-block">Dátum: 2026-10-07</div>
+
+    <h2>A dokumentum története:</h2>
+    <table>
+        <tr> <th>Dátum</th> <th>Verziószám</th> <th>Rövid leírás</th> <th>Módosította</th> </tr>
+        <tr> 
+            <td>2026-09-29</td> 
+            <td>1.0</td> 
+            <td>Az elsődleges vázlat és a struktúra kialakítása.</td> 
+            <td>Baranyai Benedek</td> 
+        </tr>
+        <tr> 
+            <td>2026-09-29</td> 
+            <td>1.1</td> 
+            <td>Fejlesztési terv, technológiák és produktumok specifikálása.</td> 
+            <td>Harik Zoltán Örs</td> 
+        </tr>
+        <tr> 
+            <td>2026-10-07</td> 
+            <td>1.2</td> 
+            <td>A Vízió dokumentum teljes kidolgozása, üzleti logikák, valamint a Java Spring Boot backend és JWT hitelesítés részletezése.</td> 
+            <td>Radó Attila</td> 
+        </tr>
+    </table>
+
+    <h2>Tartalomjegyzék:</h2>
+    <div class="content-box">
+        <ul>
+            <li><a href="#bevezetes">1. Bevezetés</a></li>
+            <li><a href="#alkalmazas-helye">2. Az alkalmazás helye</a></li>
+            <li><a href="#erintettek">3. Érintettek és felhasználók</a></li>
+            <li><a href="#vegtermek-attekintes">4. A végtermék áttekintése</a></li>
+            <li><a href="#jellemzok">5. A végtermék jellemzői, biztosított szolgáltatások</a></li>
+            <li><a href="#korlatozasok">6. Korlátozások</a></li>
+            <li><a href="#minoseg">7. Minőségi elvárások</a></li>
+            <li><a href="#dokumentacio">8. Dokumentációkkal kapcsolatos követelmények</a></li>
+            <li><a href="#kockazatok">9. Kockázat lista</a></li>
+            <li><a href="#szotar">10. Szótár</a></li>
+        </ul>
+    </div>
+
+    <a name="bevezetes"></a><h2>1. Bevezetés</h2>
+    <div class="content-box">
+        <p>A dokumentum célja a Heger Kft. által fejlesztendő modern, biztonságos banki szoftver átfogó bemutatása. A szoftver célja, hogy lakossági és vállalati ügyfelek számára nyújtson gyors, átlátható tranzakciókezelést, devizaváltási lehetőséget, valamint magas szintű adatbiztonságot.</p>
+    </div>
+
+    <a name="alkalmazas-helye"></a><h2>2. Az alkalmazás helye</h2>
+    <div class="content-box">
+        <h3>2.1 Üzleti lehetőségek</h3>
+        <p>A pénzügyi szektor digitalizációja folyamatosan gyorsul. A banki szoftver bevezetése közvetlen versenyelőnyt jelenthet a piacon, mivel a gyorsabb utalások és a kedvezőbb devizaváltási opciók ügyfeleket vonzanak a hagyományos rendszereket használó pénzintézetektől.</p>
+        
+        <h3>2.2 A probléma megfogalmazása</h3>
+        <p>A jelenlegi banki piacon és az ügyfelek szokásaiban számos probléma azonosítható. A legfőbb gond a lassú ügyintézés és az átláthatatlan tranzakciós történet. A felhasználók gyakran szembesülnek azzal, hogy az utalások napokat vesznek igénybe, különösen deviza esetén. A hagyományos banki szoftverek elavult felhasználói felületei nehezen navigálhatók, a hiteligénylési folyamatok pedig túlzottan bonyolultak és papíralapúak. Ezen felül a biztonsági kérdések is kritikusak, a megfelelő hitelesítési mechanizmusok hiánya sebezhetővé teszi az ügyfelek adatait.</p>
+        <p>A lakossági ügyfelek problémái: Lassú tranzakciók, drága devizaváltás, átláthatatlan rejtett költségek. Nem áll rendelkezésre megfelelő analitikai eszköz a kiadások követésére.</p>
+        <p>A vállalati ügyfelek problémái: Tömeges utalások nehézkes kezelése, hiányzó rugalmasság a több devizás számlák egyidejű és gyors menedzselésében.</p>
+        <p>A banki ügyintézők problémái: Szétaprózott rendszerek, ahol a hitelbírálat, az ügyfélazonosítás és a számlavezetés külön platformokon fut, így az adminisztráció lassú és hibalehetőségekkel teli.</p>
+
+        <h3>2.3 Az elkészült termék helye</h3>
+        <p>A szoftver a modern FinTech megoldások és a klasszikus banki core rendszerek között helyezkedik el. Webes technológiákra (React, Tailwind CSS, Java Spring Boot, PostgreSQL) épülve egy robusztus platformot kínál.</p>
+        <p>Kinek szól a termék? Azoknak a lakossági és vállalati ügyfeleknek, akik modern felületen szeretnék intézni pénzügyeiket. Azoknak az ügyintézőknek, akiknek átlátható statisztikákra és gyors folyamatokra van szükségük. A termék leváltja az asztali, monolitikus banki alkalmazásokat egy skálázható, webes, REST API alapú architektúrára.</p>
+    </div>
+
+    <a name="erintettek"></a><h2>3. Érintettek és felhasználók</h2>
+    <div class="content-box">
+        <h3>3.1 Az érintettek összefoglalása</h3>
+        <ul>
+            <li><strong>Fejlesztő csapat:</strong> A Heger Kft. tagjai, akik Kanban és Scrum elvek alapján készítik a rendszert.</li>
+            <li><strong>Banki vezetőség:</strong> Üzleti döntéshozók, akik a statisztikai és riportolási modul alapján határozzák meg az irányt.</li>
+        </ul>
+        
+        <h3>3.2 A felhasználók összefoglalása</h3>
+        <ul>
+            <li><strong>Ügyfél:</strong> Átutalásokat indít, számlatörténetet kér le, hitelt igényel.</li>
+            <li><strong>Ügyintéző:</strong> Jóváhagyja a hiteleket, áttekinti a tranzakciós naplókat.</li>
+            <li><strong>Adminisztrátor:</strong> Rendszerszintű beállításokat végez, menedzseli a felhasználói jogosultságokat.</li>
+        </ul>
+
+        <h3>3.3 Felhasználói környezet</h3>
+        <p>Az ügyfelek bármilyen modern webböngészőből (asztali gép, tablet, okostelefon) elérhetik a reszponzív (Tailwind CSS) felületet. Az ügyintézők asztali környezetből, védett belső banki hálózaton keresztül csatlakoznak.</p>
+
+        <h3>3.4 Illetékesek adatai</h3>
+        <p>A Heger Kft. csapattagjai a projekt megvalósításának illetékesei, akiknek elérhetőségei a "Csoportunk tagjai" táblázatban találhatók.</p>
+
+        <h3>3.5 Felhasználók adatai</h3>
+        <p>A rendszer az ügyfelek azonosításához e-mail címet és Bcrypt alapú jelszótitkosítást használ. A biztonságos kommunikációt a JWT tokenes authentikáció garantálja.</p>
+    </div>
+
+    <a name="vegtermek-attekintes"></a><h2>4. A végtermék áttekintése</h2>
+    <div class="content-box">
+        <h3>4.1 A termék kapcsolatai</h3>
+        <p>A szoftver szorosan integrálódik külső szolgáltatásokhoz, például árfolyam API-khoz a valós idejű valutaváltáshoz, és biztonságos REST API végpontokon keresztül kommunikál a klienssel.</p>
+
+        <h3>4.2 A termék használatának előnyei</h3>
+        <p>Az ügyfelek azonnali számlatörténetet kapnak, és a tranzakciók másodpercek alatt végbemennek. A bank számára a beépített naplózás és statisztika jelent óriási előnyt a kockázatok elemzésében.</p>
+
+        <h3>4.3 Feltételezések és függőségek</h3>
+        <p>Feltételezzük, hogy az ügyfelek rendelkeznek internetkapcsolattal. A devizamodul függ a külső árfolyam API-k megbízható rendelkezésre állásától.</p>
+
+        <h3>4.4 Költségbecslés</h3>
+        <p>A rendszer költségei a fejlesztői munkaórákból, a felhőalapú infrastruktúra (PostgreSQL szerver, backend futtatókörnyezet) fenntartásából és a biztonsági auditokból tevődnek össze.</p>
+
+        <h3>4.5 Installáció</h3>
+        <p>A rendszer webszervereken kerül elhelyezésre. A kliensoldali React alkalmazás és a Java Spring Boot / Node.js szerveroldal folyamatos integrációs (CI/CD) környezetből települ az éles szerverekre.</p>
+    </div>
+
+    <a name="jellemzok"></a><h2>5. A végtermék jellemzői, biztosított szolgáltatások</h2>
+    <div class="content-box">
+        <p>A Heger Kft. által készített végtermék egy komplex, nagyvállalati szintű pénzügyi tranzakciós platform. A szoftver alapja a robusztus relációs adatbázis (PostgreSQL), amely garantálja a tranzakciók (ACID) pontosságát.</p>
+        <p>Tranzakciós és Számlakezelő Modul: Lehetővé teszi a bankszámlák közötti belföldi utalások másodpercek alatti végrehajtását. A rendszer automatikusan generálja a számlatörténetet és exportálható kivonatokat készít. A számlák egyenlegének kezelése szigorú biztonsági protokollok mellett történik.</p>
+        <p>Pénzügyi és Valutaváltó Modul: Az alkalmazás natívan támogatja a több devizás számlák kezelését. Egy külső árfolyam API integrálásával a rendszer valós idejű konverziót biztosít, rejtett költségek nélkül. Ebbe a modulba tartozik a digitális hiteligénylési űrlapok kitöltése és beküldése is.</p>
+        <p>Biztonsági és Riportolási Modul: Minden pénzmozgást és bejelentkezési kísérletet naplóz a rendszer. A banki alkalmazottak és a vezetőség számára részletes ügyintézői statisztikák generálhatók. Itt történik a hibakeresés támogatása és a rendszer összehangolása is.</p>
+        <p>Technológiai megvalósítás: Radó Attila a Java alapú backendet és a JWT hitelesítést Eclipse környezetben tervezi és fejleszti, biztosítva a stabil logikát a React alapú kliensoldal kiszolgálásához. A folyamatos szinkronizációhoz a csapat a Git verziókezelőt használja.</p>
+    </div>
+
+    <a name="korlatozasok"></a><h2>6. Korlátozások</h2>
+    <div class="content-box">
+        <p>A szoftver fejlesztése során szigorúan be kell tartani a nemzeti banki előírásokat (pl. PSD2 irányelvek), és az adatvédelmi (GDPR) törvényeket. Az adatbázis hitelesítő adatokat csak titkosítva (Bcrypt) tárolhat.</p>
+    </div>
+
+    <a name="minoseg"></a><h2>7. Minőségi elvárások</h2>
+    <div class="content-box">
+        <p>Kritikus szempont a stabilitás. A kódszintű, biztonsági és integrációs teszteknek hibátlanul kell lefutniuk. A rendszer hálózati kommunikációjának minden esetben titkosítottnak (HTTPS) kell lennie, és a hitelesítést csak JWT tokenekkel szabad megoldani.</p>
+    </div>
+
+    <a name="dokumentacio"></a><h2>8. Dokumentációkkal kapcsolatos követelmények</h2>
+    <div class="content-box">
+        <p>A projekt végére a következő dokumentumoknak kell elkészülniük: (H1) Projekt Terv, (H2) Vízió dokumentum, (H3) SRS (Szoftver Követelmény Specifikáció), (H4) Analízis Modell és (H5) Rendszer Tervezés.</p>
+    </div>
+
+    <a name="kockazatok"></a><h2>9. Kockázat lista</h2>
+    <div class="content-box">
+        <ul>
+            <li><strong>Külső szolgáltatások leállása:</strong> Ha az árfolyam API nem válaszol, a devizaváltás szünetelhet. Megoldás: utolsó ismert árfolyam gyorsítótárazása figyelmeztetéssel.</li>
+            <li><strong>Biztonsági sérülékenységek:</strong> A pénzügyi adatok kompromittálódása. Megoldás: alapos biztonsági átvizsgálás és folyamatos tesztelés.</li>
+        </ul>
+    </div>
+
+    <a name="szotar"></a><h2>10. Szótár</h2>
+    <div class="content-box">
+        <ul>
+            <li><strong>JWT:</strong> JSON Web Token, biztonságos adatcserét és hitelesítést szolgáló webes szabvány.</li>
+            <li><strong>Bcrypt:</strong> Erős, egyirányú kriptográfiai algoritmus jelszavak biztonságos tárolásához.</li>
+            <li><strong>PostgreSQL:</strong> Nyílt forráskódú, robusztus relációs adatbáziskezelő rendszer.</li>
+            <li><strong>React:</strong> Kliensoldali, komponens alapú JavaScript programkönyvtár.</li>
+            <li><strong>Spring Boot / Node.js:</strong> Szerveroldali (backend) technológiák a hálózati kommunikáció és az üzleti logika megvalósításához.</li>
+            <li><strong>REST API:</strong> Szabványosított hálózati végpontok összessége, amelyen keresztül a kliens és a szerver kommunikál.</li>
+            <li><strong>Scrum / Kanban:</strong> Agilis szoftverfejlesztési keretrendszerek a csapatmunka optimalizálására.</li>
+            <li><strong>Deviza:</strong> Nemzetközi elszámolásokra szolgáló, külföldi pénznemre szóló követelés.</li>
+            <li><strong>Tranzakció:</strong> Egy adott logikai egységként kezelt adatbázis-műveletsorozat, például egy banki utalás.</li>
+            <li><strong>Git:</strong> Elosztott verziókezelő rendszer a forráskód változásainak nyomon követésére.</li>
+        </ul>
+    </div>
+</body>
+</html>

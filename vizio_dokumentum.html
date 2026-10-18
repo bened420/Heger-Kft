@@ -49,6 +49,12 @@
             <td>A Vízió dokumentum teljes kidolgozása, üzleti logikák, valamint a Java Spring Boot backend és JWT hitelesítés részletezése.</td> 
             <td>Radó Attila</td> 
         </tr>
+        <tr> 
+            <td>2026-10-18</td> 
+            <td>1.3</td> 
+            <td>Adatbázis ER diagram beillesztése a végtermék jellemzői fejezetbe.</td> 
+            <td>Baranyai Benedek</td> 
+        </tr>
     </table>
 
     <h2>Tartalomjegyzék:</h2>
@@ -133,7 +139,10 @@
 
     <a name="jellemzok"></a><h2>5. A végtermék jellemzői, biztosított szolgáltatások</h2>
     <div class="content-box">
-        <p>A Heger Kft. által készített végtermék egy komplex, nagyvállalati szintű pénzügyi tranzakciós platform. A szoftver alapja a robusztus relációs adatbázis (PostgreSQL), amely garantálja a tranzakciók (ACID) pontosságát.</p>
+        <p>A Heger Kft. által készített végtermék egy komplex, nagyvállalati szintű pénzügyi tranzakciós platform. A szoftver alapja a robusztus relációs adatbázis (PostgreSQL), amely garantálja a tranzakciók (ACID) pontosságát. A rendszer relációs adatmodelljét, a táblákat és a köztük lévő kapcsolatokat az alábbi adatbázis diagram szemlélteti:</p>
+        <p class="center-text">
+            <img src="erd_01.jpg" alt="Adatbázis ER diagram" style="max-width: 100%; height: auto; border: 1px solid #666; margin: 15px auto; display: block;">
+        </p>
         <p>Tranzakciós és Számlakezelő Modul: Lehetővé teszi a bankszámlák közötti belföldi utalások másodpercek alatti végrehajtását. A rendszer automatikusan generálja a számlatörténetet és exportálható kivonatokat készít. A számlák egyenlegének kezelése szigorú biztonsági protokollok mellett történik.</p>
         <p>Pénzügyi és Valutaváltó Modul: Az alkalmazás natívan támogatja a több devizás számlák kezelését. Egy külső árfolyam API integrálásával a rendszer valós idejű konverziót biztosít, rejtett költségek nélkül. Ebbe a modulba tartozik a digitális hiteligénylési űrlapok kitöltése és beküldése is.</p>
         <p>Biztonsági és Riportolási Modul: Minden pénzmozgást és bejelentkezési kísérletet naplóz a rendszer. A banki alkalmazottak és a vezetőség számára részletes ügyintézői statisztikák generálhatók. Itt történik a hibakeresés támogatása és a rendszer összehangolása is.</p>

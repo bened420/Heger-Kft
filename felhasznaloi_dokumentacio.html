@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>(H3) Felhasználói dokumentáció</title>    
+</head>
+<body class="center-text">
+    <h1>A mi csapatunk: Heger Kft.</h1>
+    <h1>A választott téma: Banki szoftver</h1>
+
+    <h1 class="margin-block">(H3) Felhasználói dokumentáció</h1>
+
+    <div class="margin-block">
+        Gyakorlatvezető oktató:
+        <h2>Sátán Ádám</h2>
+    </div>
+
+    <h2>Csoportunk tagjai:</h2>
+    <table>
+        <tr> <td>Baranyai Benedek</td> <td>BCOMKG</td> <td>benedek.baranyai@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Harik Zoltán Örs</td> <td>POZY70</td> <td>zoltan.ors.harik@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Radó Attila</td> <td>JX93VX</td> <td>attila.rado@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Ötvös Csongor</td> <td>RKOW9K</td> <td>csongor.otvos@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Csóka Nándor Gábor</td> <td>MDX9OH</td> <td>nandor.gabor.csoka@student.uni-miskolc.hu</td> </tr>
+    </table>
+
+    <div class="right-text margin-block">Dátum: 2026-10-26</div>
+
+    <h2>A dokumentum története:</h2>
+    <table>
+        <tr> <th>Dátum</th> <th>Verziószám</th> <th>Rövid leírás</th> <th>Módosította</th> </tr>
+        <tr> 
+            <td>2026-10-26</td> 
+            <td>1.0</td> 
+            <td>A felhasználói kézikönyv első változatának elkészítése a követelményspecifikáció és a Use Case leírások alapján.</td> 
+            <td>Baranyai Benedek</td> 
+        </tr>
+    </table>
+
+    <h2>Tartalomjegyzék:</h2>
+    <div class="content-box">
+        <ul>
+            <li><a href="#bevezetes">1. Bevezetés és a rendszer célja</a></li>
+            <li><a href="#kovetelmenyek">2. Rendszerkövetelmények és elérés</a></li>
+            <li><a href="#azonositas">3. Belépés és biztonsági azonosítás</a></li>
+            <li><a href="#lakossagi">4. Lakossági ügyfél funkciók</a></li>
+            <li><a href="#vallalati">5. Vállalati ügyfél funkciók</a></li>
+            <li><a href="#ugyintezo">6. Banki ügyintézői felület</a></li>
+            <li><a href="#adminisztracio">7. Rendszeradminisztrációs felület</a></li>
+            <li><a href="#hibaelharitas">8. Gyakori kérdések és hibaelhárítás</a></li>
+        </ul>
+    </div>
+
+    <a name="bevezetes"></a><h2>1. Bevezetés és a rendszer célja</h2>
+    <div class="content-box">
+        <p>Ez a felhasználói kézikönyv a Heger Kft. által készített internetes banki szoftver használatához nyújt gyakorlati útmutatót. A webes alkalmazás segítségével a bank ügyfelei kényelmesen intézhetik mindennapi pénzügyeiket: ellenőrizhetik számlaegyenlegüket, átutalásokat indíthatnak, devizát válthatnak, vagy hitelkérelmet nyújthatnak be. A rendszer a lakossági ügyfelek mellett külön felületet biztosít a vállalati partnereknek a csoportos fizetésekhez, valamint a bank belső munkatársainak az ügyintézéshez és ellenőrzéshez.</p>
+    </div>
+
+    <a name="kovetelmenyek"></a><h2>2. Rendszerkövetelmények és elérés</h2>
+    <div class="content-box">
+        <p>A szoftver teljesen böngészőalapú, külön kliensoldali program telepítését nem igényli. Használatához az alábbi feltételek szükségesek:</p>
+        <ul>
+            <li><strong>Támogatott webböngészők:</strong> Google Chrome, Mozilla Firefox, Microsoft Edge, Safari legfrissebb vagy az utóbbi két főverziója.</li>
+            <li><strong>Képernyőfelbontás:</strong> A felület alkalmazkodik a képernyőmérethez (mobiltelefon, táblagép és asztali monitor is támogatott). Asztali nézetben legalább 1280x720 képpontos felbontás javasolt a kényelmes munkához.</li>
+            <li><strong>Hálózati kapcsolat:</strong> Megbízható, legalább 1 Mbit/s sebességű internetkapcsolat, engedélyezett HTTPS protokollal.</li>
+            <li><strong>Böngészőbeállítások:</strong> A JavaScript futtatásának és a cookie-k fogadásának engedélyezve kell lennie a bejelentkezési tokenek biztonságos kezeléséhez.</li>
+        </ul>
+    </div>
+
+    <a name="azonositas"></a><h2>3. Belépés és biztonsági azonosítás</h2>
+    <div class="content-box">
+        <p>A banki felület szigorú biztonsági protokollokat alkalmaz a számlaadatok védelmében. A belépés folyamata az alábbi lépésekből áll:</p>
+        <ol>
+            <li>Nyissa meg a böngészőben a bank weboldalát, majd kattintson a jobb felső sarokban található <em>Bejelentkezés</em> gombra.</li>
+            <li>Adja meg a regisztrációkor megadott e-mail címét és a hozzá tartozó jelszavát.</li>
+            <li>Kattintson a <em>Tovább</em> gombra. A rendszer ekkor elindítja a kétlépcsős azonosítást (2FA), és egy 6 számjegyű biztonsági kódot küld az Ön által beállított hitelesítő alkalmazásra vagy SMS-ben a regisztrált telefonszámára.</li>
+            <li>Írja be a kapott kódot a képernyőn megjelenő beviteli mezőbe, majd nyomja meg a <em>Belépés megerősítése</em> gombot.</li>
+        </ol>
+        <p><strong>Fontos:</strong> Három egymást követő hibás jelszóbeírás esetén a rendszer biztonsági okokból ideiglenesen 15 percre zárolja a belépést az illetéktelen próbálkozások megelőzése érdekében. A munkavégzés befejeztével mindig használja a <em>Kijelentkezés</em> gombot!</p>
+    </div>
+
+    <a name="lakossagi"></a><h2>4. Lakossági ügyfél funkciók</h2>
+    <div class="content-box">
+        <h3>4.1. Főoldali egyenleg és számlatörténet</h3>
+        <p>A sikeres belépés után a kezdőképernyő jelenik meg. Itt látható az összes aktív folyószámla és megtakarítási számla a hozzájuk tartozó IBAN formátumú számlaszámmal, devizanemmel és az aktuálisan elérhető egyenleggel. Egy adott számlára rákattintva részletesen megtekinthető a legutóbbi tranzakciók listája, a levonások és jóváírások dátuma, összege, valamint a partnerek adatai.</p>
+
+        <h3>4.2. Belföldi eseti forint átutalás indítása</h3>
+        <p>Új átutalási megbízást az <em>Átutalás indítása</em> menüpontban lehet rögzíteni. A folyamat lépései:</p>
+        <ol>
+            <li><strong>Forrásszámla kiválasztása:</strong> Válassza ki a legördülő listából azt a számláját, amelyről az összeget utalni kívánja.</li>
+            <li><strong>Kedvezményezett neve:</strong> Adja meg a fogadó fél teljes nevét vagy cégnevét.</li>
+            <li><strong>Célszámlaszám:</strong> Gépelje be a fogadó fél 24 számjegyű belföldi számlaszámát (a rendszer gépelés közben automatikusan ellenőrzi az alaki helyességet és az ellenőrző összeget).</li>
+            <li><strong>Összeg megadása:</strong> Írja be az elküldeni kívánt forint összeget. A program azonnal jelzi, ha az összeg meghaladja az elérhető egyenleget vagy a beállított napi limitet.</li>
+            <li><strong>Közlemény:</strong> Opcionálisan megadható legfeljebb 70 karakteres megjegyzés (például számlaszám vagy hivatkozás).</li>
+            <li><strong>Ellenőrzés és jóváhagyás:</strong> Az <em>Átutalás ellenőrzése</em> gombra kattintva az összefoglaló ablakban még egyszer átnézheti az adatokat, majd a jóváhagyással a megbízás azonnal beküldésre kerül. A sikeres utalásról visszaigazoló üzenet jelenik meg az azonosító kóddal.</li>
+        </ol>
+
+        <h3>4.3. Devizaváltás és árfolyamok lekérdezése</h3>
+        <p>A <em>Valutaváltó</em> menüpontban az ügyfelek forint és devizaszámláik (EUR, USD) között tudnak pénzt konvertálni a valós idejű piaci árfolyamok alapján. A képernyőn folyamatosan nyomon követhető a vételi és eladási árfolyam. A forrás devizanem és az összeg megadása után a kalkulátor automatikusan kiszámolja a jóváírásra kerülő összeget. A megerősítés után a két érintett számla egyenlege azonnal frissül.</p>
+
+        <h3>4.4. Számlakivonat letöltése</h3>
+        <p>A <em>Dokumentumok</em> menüben az ügyfelek havi bontásban érhetik el a lezárt időszakok hivatalos bankszámlakivonatait. A kivonatok PDF formátumban egy kattintással letölthetők vagy helyben megtekinthetők. A fájl tartalmazza az adott hónap összes könyvelt forgalmát és a záróegyenleget.</p>
+
+        <h3>4.5. Bankkártyák kezelése és limitek beállítása</h3>
+        <p>A <em>Kártyáim</em> fül alatt láthatók a folyószámlához kapcsolt bankkártyák. Itt lehetőség van:</p>
+        <ul>
+            <li>A napi készpénzfelvételi és vásárlási limit biztonsági okokból történő csökkentésére vagy emelésére.</li>
+            <li>Az online internetes vásárlások külön engedélyezésére vagy tiltására.</li>
+            <li>A bankkártya azonnali ideiglenes zárolására kártyavesztés vagy gyanús tranzakció gyanúja esetén.</li>
+        </ul>
+
+        <h3>4.6. Online hiteligénylés</h3>
+        <p>A lakossági ügyfelek az <em>Online Hitel</em> fülön igényelhetnek személyi kölcsönt. A hitelkalkulátorban be kell állítani a kívánt összeget és a futamidőt, amely alapján a rendszer azonnal kiszámolja a várható havi törlesztőrészletet és a THM értékét. Az űrlap kitöltése után (jövedelmi adatok, munkahely típusa) a kérelem beküldésre kerül a banki elbíráló rendszerbe.</p>
+    </div>
+
+    <a name="vallalati"></a><h2>5. Vállalati ügyfél funkciók</h2>
+    <div class="content-box">
+        <h3>5.1. Vállalati számlakezelés</h3>
+        <p>A céges felhasználók a vállalkozásukhoz tartozó több bankszámlát is kezelhetnek, és jogosultak az alkalmazottak vagy alvállalkozók kifizetéseit gyorsított eljárásban lebonyolítani. A vállalati profil magasabb biztonsági ellenőrzést és nagyobb összegű napi tranzakciós limiteket biztosít.</p>
+
+        <h3>5.2. Tömeges átutalás (csoportos kifizetés)</h3>
+        <p>Nagyobb mennyiségű tétel (például munkabérek vagy beszállítói számlák) egyszerre történő kifizetéséhez a tömeges átutalás funkció használható:</p>
+        <ol>
+            <li>Lépjen a <em>Vállalati megbízások / Tömeges utalás</em> menübe.</li>
+            <li>Töltse fel az előre elkészített, szabványos formátumú adatfájlt (CSV formátum, amely tartalmazza a kedvezményezettek nevét, számlaszámát, összegét és a közleményt), vagy rögzítse a tételeket egyenként a táblázatban.</li>
+            <li>A rendszer feldolgozza az állományt, és tételenként ellenőrzi a számlaszámok formai érvényességét, valamint összesíti a teljes terhelendő összeget.</li>
+            <li>Ha a teljes összeg rendelkezésre áll a forrásszámlán, egyetlen 2FA jóváhagyással a teljes csomag indítható, nem szükséges tételenként külön megerősíteni a kifizetéseket.</li>
+        </ol>
+    </div>
+
+    <a name="ugyintezo"></a><h2>6. Banki ügyintézői felület</h2>
+    <div class="content-box">
+        <p>A banki ügyintézői jogosultsággal rendelkező dolgozók egy belső kezelőfelülethez férnek hozzá, amely nem a privát számlakezelésre, hanem az ügyfélkérelmek elbírálására és a felügyeletre szolgál.</p>
+        
+        <h3>6.1. Hitelkérelmek elbírálása</h3>
+        <p>Az ügyintézői menüben megjelenik a beérkezett és elbírálásra váró hiteligénylések listája. Az ügyintéző az alábbi lépéseket hajtja végre:</p>
+        <ul>
+            <li>Megnyitja a kiválasztott kérelmező adatlapját, megtekinti a megadott jövedelmi adatokat és a kért összeget.</li>
+            <li>Ellenőrzi a kérelmező számlamúltját és az esetleges korábbi elmaradásokat.</li>
+            <li>Három döntési lehetőség közül választhat: <em>Jóváhagyás</em>, <em>Elutasítás</em> (indoklás kötelező megadásával), vagy <em>Hiánypótlás kérése</em>.</li>
+            <li>A jóváhagyott kölcsön összege automatikusan jóváírásra kerül az ügyfél számláján, és a rendszer legenerálja a törlesztési ütemtervet.</li>
+        </ul>
+
+        <h3>6.2. Ügyfélprofilok és tranzakciók megtekintése</h3>
+        <p>Az ügyintéző név, e-mail cím vagy számlaszám alapján rákereshet a nyilvántartott ügyfelekre. Jogosult a tranzakciós előzmények és hibaüzenetek vizsgálatára, amennyiben az ügyfél panasszal vagy segítségkéréssel fordul a bankhoz.</p>
+    </div>
+
+    <a name="adminisztracio"></a><h2>7. Rendszeradminisztrációs felület</h2>
+    <div class="content-box">
+        <p>A rendszeradminisztrátorok a banki szoftver technikai működéséért és biztonságáért felelnek.</p>
+        
+        <h3>7.1. Felhasználói fiókok kezelése</h3>
+        <p>Az adminisztrátor kezeli a belső dolgozói jogosultságokat (ki kaphat ügyintézői hozzáférést), valamint szükség esetén manuálisan feloldhatja a jelszóelgépelés miatt zárolt fiókokat, vagy visszaélés gyanúja esetén azonnali tiltást rendelhet el.</p>
+
+        <h3>7.2. Biztonsági audit naplók vizsgálata</h3>
+        <p>A banki szabályzatoknak megfelelően a rendszer minden műveletet időbélyeggel rögzít az adatbázisban. Az adminisztrátor az Audit felületen szűrheti az eseményeket:</p>
+        <ul>
+            <li>Sikertelen bejelentkezési kísérletek és gyanús IP címek figyelése.</li>
+            <li>Nagy összegű vagy szokatlan pénzforgalmi tranzakciók naplóbejegyzései.</li>
+            <li>Adatmódosítások (pl. limitek állítása, profiladat változások) követése a felelősség megállapításához.</li>
+        </ul>
+    </div>
+
+    <a name="hibaelharitas"></a><h2>8. Gyakori kérdések és hibaelhárítás</h2>
+    <div class="content-box">
+        <p><strong>1. Mi a teendő, ha elfelejtettem a jelszavamat?</strong><br>
+        A bejelentkezési oldalon kattintson az <em>Elfelejtett jelszó</em> hivatkozásra. Adja meg regisztrált e-mail címét, ahová a rendszer egy egyszer használatos biztonsági linket küld, amellyel új, biztonságos jelszó állítható be.</p>
+
+        <p><strong>2. Miért írja ki a rendszer, hogy hibás a megadott számlaszám?</strong><br>
+        A magyar bankszámlaszámok 16 vagy 24 számjegyből állnak, és szigorú ellenőrző algoritmust (CDV) követnek. Ha akár egyetlen számjegyet elgépel, a program piros jelzéssel megakadályozza a megbízás rögzítését, így megelőzhető, hogy téves számlára menjen a pénz.</p>
+
+        <p><strong>3. Mi történik, ha nincs elegendő fedezet a számlámon?</strong><br>
+        A rendszer az átutalás vagy devizaváltás jóváhagyása előtt azonnal ellenőrzi a szabad egyenleget. Ha a megbízás összege meghaladja a rendelkezésre álló pénzt, a tranzakció nem indul el, és a felület hibaüzenetben figyelmeztet a fedezethiányra.</p>
+
+        <p><strong>4. Nem érkezik meg a 2FA megerősítő kód. Mit tegyek?</strong><br>
+        Várjon 60 másodpercet, majd kattintson az <em>Új kód kérése</em> lehetőségre. Ellenőrizze, hogy telefonján van-e megfelelő térerő vagy internetkapcsolat. Ha továbbra sem kapja meg a kódot, kérjük, keresse fel az ügyfélszolgálatot az azonosító adatai ellenőrzéséhez.</p>
+
+        <p><strong>5. Mennyi idő alatt ér célba a belföldi átutalás?</strong><br>
+        Az azonnali fizetési rendszernek (AFR) köszönhetően a belföldi, forint alapú eseti átutalások a nap 24 órájában átlagosan 5 másodpercen belül jóváírásra kerülnek a fogadó fél számláján.</p>
+    </div>
+
+    <div class="margin-block">
+        <a href="index.html">Vissza a főoldalra</a>
+    </div>
+</body>
+</html>

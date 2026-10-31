@@ -26,7 +26,7 @@
         <tr> <td>Csóka Nándor Gábor</td> <td>MDX9OH</td> <td>nandor.gabor.csoka@student.uni-miskolc.hu</td> </tr>
     </table>
 
-    <div class="right-text margin-block">Dátum: 2026-10-26</div>
+    <div class="right-text margin-block">Dátum: 2026-10-31</div>
 
     <h2>A dokumentum története:</h2>
     <table>
@@ -36,6 +36,24 @@
             <td>0.1</td> 
             <td>A Software követelmény specifikáció (SRS) kezdeti vázlatának létrehozása a tantárgyi sablon alapján.</td> 
             <td>Baranyai Benedek</td> 
+        </tr>
+        <tr> 
+            <td>2026-10-28</td> 
+            <td>0.5</td> 
+            <td>A funkcionális követelmények, aktorok és a 12 részletes use case specifikáció kidolgozása a diagram alapján.</td> 
+            <td>Radó Attila</td> 
+        </tr>
+        <tr> 
+            <td>2026-10-29</td> 
+            <td>0.8</td> 
+            <td>A nem funkcionális követelmények (használhatóság, megbízhatóság, teljesítmény), interfészek és szabványok fejezetek kidolgozása.</td> 
+            <td>Csóka Nándor Gábor</td> 
+        </tr>
+        <tr> 
+            <td>2026-10-31</td> 
+            <td>1.0</td> 
+            <td>A bevezetés, termék áttekintés, tervezési korlátok és mellékletek véglegesítése, az SRS dokumentum teljes lezárása.</td> 
+            <td>Harik Zoltán Örs</td> 
         </tr>
     </table>
 
@@ -50,7 +68,7 @@
             <li><a href="#teljesitmeny">6. Teljesítmény (Performance)</a></li>
             <li><a href="#tamogatottsag">7. Támogatottság (Supportability)</a></li>
             <li><a href="#tervezesi-korlatozasok">8. Tervezési korlátozások (Design Constraints)</a></li>
-            <li><a href="#help-rendszer">9. On-line dokumentáció és Help rendszer (Online User Documentation and Help System)</a></li>
+            <li><a href="#help-rendszer">9. On-line dokumentáció és Help rendszer</a></li>
             <li><a href="#kesz-komponensek">10. Felhasznált kész komponensek (Third-party Components)</a></li>
             <li><a href="#interfeszek">11. Interfészek (Interfaces)</a></li>
             <li><a href="#szabvanyok">12. Alkalmazott szabványok (Applicable Standards)</a></li>
@@ -60,81 +78,506 @@
 
     <a name="bevezetes"></a><h2>1. Bevezetés (Introduction)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <a name="cel"></a><h3>1.1. Cél</h3>
+        <p>Jelen Software követelmény specifikáció (SRS) célja a Heger Kft. által fejlesztendő modern banki szoftverrendszer funkcionális és nem funkcionális követelményeinek pontos, formai és szakmai meghatározása. A dokumentum rögzíti a rendszerrel szemben támasztott felhasználói elvárásokat, a működési korlátokat, a biztonsági elveket, valamint az alkalmazandó technológiai alapokat. Ez a dokumentáció szolgál a tervezési fázis (H4 Analízis modell és H5 Rendszerterv), a tesztelés, valamint az átadás-átvétel műszaki alapjául.</p>
+
+        <a name="hatokor"></a><h3>1.2. Hatókör</h3>
+        <p>A specifikált szoftverrendszer neve: Heger Banki Rendszer (Heger Online Banking Platform). A rendszer egy biztonságos, webes felületű lakossági és vállalati internetbank, amely felváltja a hagyományos, nehezen kezelhető banki felületeket. A szoftver hatóköre kiterjed a többdevizás számlavezetésre, belföldi forint átutalások azonnali lebonyolítására, vállalati tömeges megbízások rögzítésére, valós idejű devizakonverzióra külső árfolyam-szolgáltató bevonásával, digitális hiteligénylési folyamatra, valamint belső banki ügyintézői bírálatra és részletes biztonsági audit naplózásra.</p>
+
+        <a name="fogalmak"></a><h3>1.3. Fogalmak és rövidítések</h3>
+        <p>A dokumentumban alkalmazott legfontosabb szakmai kifejezések:</p>
+        <ul>
+            <li><strong>SRS:</strong> Software Requirements Specification (Software követelmény specifikáció).</li>
+            <li><strong>AFR:</strong> Azonnali Fizetési Rendszer (Magyar Nemzeti Bank által előírt 5 másodpercen belüli elszámolás).</li>
+            <li><strong>2FA:</strong> Kétlépcsős azonosítás (Two-Factor Authentication).</li>
+            <li><strong>JWT:</strong> JSON Web Token, állapotmentes digitális aláírt hitelesítési token.</li>
+            <li><strong>CDV kód:</strong> Cégjegyzék- és számlaszám-ellenőrző algoritmus.</li>
+            <li><strong>ACID:</strong> Atomicity, Consistency, Isolation, Durability (adatbázis megbízhatósági alapelvek).</li>
+            <li><strong>Audit Log:</strong> Rendszereseményeket és pénzügyi műveleteket rögzítő biztonsági napló.</li>
+        </ul>
+        <p>A teljes és részletes fogalomtár a különálló <a href="szotar.html">Szótár (Fogalomtár)</a> oldalon található meg.</p>
+
+        <a name="hivatkozasok"></a><h3>1.4. Hivatkozások</h3>
+        <ul>
+            <li>Heger Kft. (H1) Projekt terv (<a href="projekt_terv.html">projekt_terv.html</a>)</li>
+            <li>Heger Kft. (H2) Vízió dokumentum (<a href="vizio_dokumentum.html">vizio_dokumentum.html</a>)</li>
+            <li>Heger Kft. (H3) Felhasználói dokumentáció v1.0 (<a href="felhasznaloi_dokumentacio.html">felhasznaloi_dokumentacio.html</a>)</li>
+            <li>Heger Kft. Szótár és Fogalomtár (<a href="szotar.html">szotar.html</a>)</li>
+            <li>Dr. Mileff Péter tantárgyi követelményei és sablonjai (Miskolci Egyetem, IIT)</li>
+            <li>Magyar Nemzeti Bank (MNB) pénzforgalmi és informatikai biztonsági ajánlásai</li>
+            <li>PSD2 európai uniós fizetési irányelv (Directive 2015/2366/EU)</li>
+        </ul>
+
+        <a name="attekintes-fejezet"></a><h3>1.5. A dokumentum további részeinek áttekintése</h3>
+        <p>A specifikáció további fejezetei az alábbi logikai sorrendben épülnek fel: A 2. fejezet bemutatja a termék általános környezetét, a felhasználói csoportokat és a legfőbb korlátozásokat. A 3. fejezet tárgyalja a rendszer funkcionális követelményeit, amely tartalmazza a teljes rendszer UML Use Case diagramját, az aktorok pontos leírását, valamint az összes használati eset lépésről lépésre történő kidolgozását. A 4-7. fejezetek a minőségi és nem funkcionális elvárásokat rögzítik (használhatóság, megbízhatóság, teljesítmény, karbantarthatóság). A 8-10. fejezetek a technikai megkötéseket, help rendszert és külső könyvtárakat határozzák meg. A 11-12. fejezetek az interfészeket és szabványokat írják le, a 13. fejezet pedig a mellékleteket foglalja össze.</p>
     </div>
 
     <a name="attekintes"></a><h2>2. Áttekintés (Overview)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <a name="termek-perspektiva"></a><h3>2.1. A termék környezete és távlatai</h3>
+        <p>A Heger Banki Rendszer egy modern, háromrétegű webes kliens-szerver platform. Nem önmagában zárt szigetként működik, hanem szervesen illeszkedik a banki informatikai ökoszisztémába. Kapcsolatot tart a relációs adatbázis-kiszolgálóval (PostgreSQL), kommunikál a külső piaci árfolyam API szolgáltatóval, valamint felkészített a bankközi elszámoló rendszerekhez való későbbi közvetlen csatlakozásra. Kliensoldalon szabványos webböngészőkből érhető el, ezáltal független az ügyfelek operációs rendszerétől és eszköztípusától.</p>
+
+        <a name="funkciok-osszefoglalo"></a><h3>2.2. A legfontosabb funkciók összefoglalása</h3>
+        <ul>
+            <li>Erős, kétlépcsős felhasználói hitelesítés (e-mail, jelszó, 2FA ellenőrző kód).</li>
+            <li>Többdevizás számlakezelés (HUF, EUR, USD), valós idejű egyenleg lekérdezés és tételes tranzakciós történet.</li>
+            <li>Belföldi eseti forint átutalások indítása azonnali alaki és fedezeti ellenőrzéssel.</li>
+            <li>Vállalati tömeges megbízások rögzítése és kötegelt végrehajtása.</li>
+            <li>Hivatalos havi bankszámlakivonatok előállítása és letöltése PDF formátumban.</li>
+            <li>Bankkártya napi vásárlási és készpénzfelvételi limitek módosítása, valamint azonnali kártyazárolás.</li>
+            <li>Valós idejű devizaváltás piaci árfolyamok alapján forint és devizaszámlák között.</li>
+            <li>Digitális hiteligénylési adatlap kitöltése és beküldése törlesztőrészlet-kalkulációval.</li>
+            <li>Banki ügyintézői felület a hitelkérelmek bírálatához és az ügyfélprofilok vizsgálatához.</li>
+            <li>Rendszeradminisztrátori jogosultságkezelés és részletes biztonsági audit napló lekérdezés.</li>
+        </ul>
+
+        <a name="felhasznaloi-korok"></a><h3>2.3. A felhasználók jellemzői és csoportjai</h3>
+        <ul>
+            <li><strong>Lakossági ügyfél:</strong> Átlagos informatikai ismeretekkel rendelkező magánszemély, aki tiszta, áttekinthető kezelőfelületet igényel az alapvető pénzügyeihez (egyenleg, utalás, kártyakezelés, személyi kölcsön).</li>
+            <li><strong>Vállalati ügyfél:</strong> Pénzügyi adminisztrátor vagy cégvezető, aki nagy mennyiségű tételt kezel egyszerre, csoportos kifizetéseket indít, és magasabb napi utalási limitekkel dolgozik.</li>
+            <li><strong>Banki ügyintéző:</strong> A pénzintézet szakmai munkatársa, aki alapos banki szabályismerettel rendelkezik, hitelbírálatokat végez és ellenőrzi a kérelmezők hátterét.</li>
+            <li><strong>Rendszeradminisztrátor:</strong> Magas informatikai felkészültségű szakember, aki a fiókok karbantartását, a szerverbeállításokat és a biztonsági naplók ellenőrzését végzi.</li>
+        </ul>
+
+        <a name="altalanos-korlatok"></a><h3>2.4. Általános korlátozások</h3>
+        <ul>
+            <li>A pénzügyi tranzakcióknak meg kell felelniük a hatályos pénzforgalmi jogszabályoknak és bankbiztonsági direktíváknak (PSD2, MNB).</li>
+            <li>A személyes és pénzügyi adatok védelmére kötelezően alkalmazni kell a GDPR előírásait.</li>
+            <li>Az érzékeny jelszavakat tilos nyers szövegként tárolni, Bcrypt hash algoritmus használata kötelező.</li>
+            <li>A hálózati kommunikáció kizárólag titkosított HTTPS (TLS 1.3) csatornán történhet.</li>
+        </ul>
+
+        <a name="feltetelezesek"></a><h3>2.5. Feltételezések és függőségek</h3>
+        <ul>
+            <li>Feltételezzük, hogy az ügyfelek rendelkeznek stabil internetkapcsolattal és modern böngészővel.</li>
+            <li>A devizaváltási kalkuláció folyamatos működéséhez elengedhetetlen a külső árfolyam REST API stabil rendelkezésre állása.</li>
+            <li>A kétlépcsős azonosítás feltételezi, hogy az ügyfél rendelkezik működőképes hitelesítő alkalmazással vagy SMS fogadására alkalmas mobiltelefonnal.</li>
+        </ul>
     </div>
 
     <a name="funkciok"></a><h2>3. A rendszer funkciói (Specific Requirements)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <a name="use-case-diagram"></a><h3>3.1. Rendszer Use Case diagram</h3>
+        <p>A Heger Banki Rendszer teljes funkcionális felépítését, az aktorokat, a használati eseteket és a köztük lévő kapcsolatokat az alábbi diagram foglalja össze:</p>
+        
+        <p class="center-text">
+            <img src="usecasediagram.png" alt="Heger Banki Rendszer Use Case Diagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="aktorok"></a><h3>3.2. A rendszer szereplői (Aktorok)</h3>
+        <ul>
+            <li><strong>Ügyfél (Általános aktor):</strong> Alapvető szereplő, aki a bank szolgáltatásait igénybe veszi. Rendelkezik azonosítóval, beléphet a rendszerbe, lekérdezheti számláit, eseti átutalást kezdeményezhet, számlakivonatot tölthet le, árfolyamokat nézhet és hitelkérelmet nyújthat be.</li>
+            <li><strong>Lakossági Ügyfél:</strong> Az általános Ügyfél leszármazottja. Kifejezetten a magánszemélyekre jellemző funkciókat éri el, mint például a hozzá tartozó bankkártyák kezelése és napi használati limitek beállítása.</li>
+            <li><strong>Vállalati Ügyfél:</strong> Szintén az általános Ügyfél leszármazottja. A céges profil sajátosságaként jogosult nagy tételszámú tömeges átutalásokat indítani egyetlen jóváhagyási lépéssel.</li>
+            <li><strong>Banki Ügyintéző:</strong> A bank belső munkatársa. Feladata az ügyfelek által beadott hitelkérelmek vizsgálata és elbírálása, valamint az ügyfélprofilok és naplóbejegyzések ellenőrzése panaszkezelés során.</li>
+            <li><strong>Rendszeradminisztrátor:</strong> Kiemelt jogosultságú belső felhasználó, aki a rendszer biztonsági paramétereit kezeli, feloldja a zárolt felhasználói fiókokat, és ellenőrzi a biztonsági audit naplókat.</li>
+            <li><strong>Külső Árfolyam API (System Actor):</strong> Időzített külső gépi szolgáltatás, amely a nemzetközi és nemzeti devizaárfolyamokat szolgáltatja JSON formátumban a banki árfolyamtábla frissítéséhez.</li>
+        </ul>
+
+        <a name="use-case-reszletek"></a><h3>3.3. Részletes használati esetek (Use Case leírások)</h3>
+
+        <h4>UC-01: Bejelentkezés és 2FA hitelesítés</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> A felhasználó (ügyfél, ügyintéző vagy adminisztrátor) azonosítja magát a rendszerben az e-mail címe, jelszava és egy egyszer használatos kétlépcsős biztonsági kód segítségével.</li>
+            <li><strong>Aktorok:</strong> Ügyfél, Banki Ügyintéző, Rendszeradminisztrátor.</li>
+            <li><strong>Prekondíciók:</strong> A felhasználó rendelkezik aktív regisztrációval és a fiókja nincs zárolt státuszban.</li>
+            <li><strong>Postkondíciók:</strong> A felhasználó sikeresen belép, a szerver digitálisan aláírt JWT tokent állít ki a munkamenethez, amely meghatározza a jogosultsági szintet.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>A felhasználó megnyitja a bejelentkező oldalt és megadja az e-mail címét és jelszavát.</li>
+                    <li>A rendszer ellenőrzi a jelszó Bcrypt lenyomatát az adatbázisban.</li>
+                    <li>Sikeres jelszóellenőrzés után a rendszer 2FA kódot kér, és elküldi az egyszer használatos kódot.</li>
+                    <li>A felhasználó beírja a 6 számjegyű kódot.</li>
+                    <li>A rendszer validálja a kódot, legenerálja a JWT tokent, és a felhasználói szerepkörnek megfelelő kezdőoldalra irányít.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Ha a felhasználó korábban megbízhatónak jelölte a böngészőt, a 2FA kérés átugorható az érvényességi időn belül.</li>
+            <li><strong>Kivételes esetek:</strong> 
+                <ul>
+                    <li>Hibás jelszó: A rendszer hibaüzenetet jelenít meg, növeli a sikertelen próbálkozások számlálóját.</li>
+                    <li>3 sikertelen próbálkozás után a fiók 15 percre zárolásra kerül, és biztonsági naplóbejegyzés keletkezik.</li>
+                    <li>Lejárt vagy hibás 2FA kód esetén a rendszer új kód megadását kéri.</li>
+                </ul>
+            </li>
+            <li><strong>Kapcsolatok:</strong> A többi védett use case előfeltétele.</li>
+        </ul>
+
+        <h4>UC-02: Számlaegyenleg és történet lekérdezése</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> Az ügyfél megtekinti a bankszámlái aktuális elérhető egyenlegét, könyvelt egyenlegét és az elmúlt időszak tranzakciós listáját.</li>
+            <li><strong>Aktorok:</strong> Ügyfél.</li>
+            <li><strong>Prekondíciók:</strong> Érvényes bejelentkezett állapot (UC-01).</li>
+            <li><strong>Postkondíciók:</strong> A felület megjeleníti a számlák adatait és a szűrt tranzakciókat.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>Az ügyfél a főoldali számlalistára navigál.</li>
+                    <li>A rendszer lekéri az ügyfélhez rendelt aktív számlák adatait a PostgreSQL adatbázisból.</li>
+                    <li>A kliens megjeleníti a számlaszámokat, devizanemeket és egyenlegeket.</li>
+                    <li>Az ügyfél rákattint egy adott számlára a részletes számlatörténet megtekintéséhez.</li>
+                    <li>A rendszer időrendben, a legfrissebbel kezdve listázza a könyvelt terheléseket és jóváírásokat.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Az ügyfél szűrést állíthat be dátumtartományra, összegre vagy tranzakciótípusra.</li>
+            <li><strong>Kivételes esetek:</strong> Hálózati hiba esetén a rendszer figyelmeztet, hogy az adatok betöltése sikertelen, és felajánlja az újrapróbálkozást.</li>
+            <li><strong>Kapcsolatok:</strong> Nincs közvetlen al-use case kapcsolata.</li>
+        </ul>
+
+        <h4>UC-03: Belföldi eseti átutalás indítása</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> Az ügyfél forint alapú eseti átutalást kezdeményez egy belföldi bankszámlára.</li>
+            <li><strong>Aktorok:</strong> Ügyfél.</li>
+            <li><strong>Prekondíciók:</strong> Érvényes bejelentkezett állapot (UC-01), legalább egy pozitív egyenlegű forrásszámla.</li>
+            <li><strong>Postkondíciók:</strong> A forrásszámla egyenlege levonásra kerül, a tranzakció az adatbázisban könyvelődik, és audit napló készül.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>Az ügyfél kiválasztja az indító forrásszámlát.</li>
+                    <li>Megadja a kedvezményezett nevét, 24 jegyű számlaszámát, az összeget és az opcionális közleményt.</li>
+                    <li>A rendszer ellenőrzi a megadott számlaszám alaki helyességét (CDV algoritmus).</li>
+                    <li>A rendszer lefuttatja a fedezet és számlastátusz ellenőrzését.</li>
+                    <li>Az ügyfél áttekinti az adatokat az ellenőrző képernyőn, majd megerősíti az utalást.</li>
+                    <li>A rendszer végrehajtja a tranzakciót, és rögzíti az audit naplóban.</li>
+                    <li>A képernyőn megjelenik a tranzakció sikerességét igazoló bizonylat.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Ha a forrásszámla és a küldött összeg devizaneme eltér, a folyamat kibővül az automatikus devizakonverzióval.</li>
+            <li><strong>Kivételes esetek:</strong>
+                <ul>
+                    <li>Formailag hibás számlaszám: A rendszer azonnal pirossal jelzi a hibát és letiltja a jóváhagyó gombot.</li>
+                    <li>Fedezethiány: A rendszer tájékoztatja az ügyfelet, hogy a rendelkezésre álló összeg nem elegendő.</li>
+                    <li>Napi limit túllépése: A rendszer figyelmeztet, hogy a megadott összeg meghaladja a beállított napi limitet.</li>
+                </ul>
+            </li>
+            <li><strong>Kapcsolatok:</strong> 
+                <ul>
+                    <li>&lt;&lt;include&gt;&gt; Fedezet és számlastátusz ellenőrzése</li>
+                    <li>&lt;&lt;include&gt;&gt; Tranzakció audit naplózása</li>
+                    <li>&lt;&lt;extend&gt;&gt; Devizakonverzió végrehajtása (ha eltérő a devizanem)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>UC-04: Tömeges átutalás indítása</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> A vállalati ügyfél egyetlen művelettel több tételből álló kifizetési csomagot indít el.</li>
+            <li><strong>Aktorok:</strong> Vállalati Ügyfél.</li>
+            <li><strong>Prekondíciók:</strong> Érvényes bejelentkezett állapot vállalati szerepkörrel, aktív céges számla.</li>
+            <li><strong>Postkondíciók:</strong> Az összes helyes tétel átutalásra kerül, a forrásszámla egyenlege az összeggel csökken, csoportos naplóbejegyzés keletkezik.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>A felhasználó megnyitja a tömeges utalási felületet és kiválasztja a terhelendő céges számlát.</li>
+                    <li>Feltölt egy strukturált állományt (CSV formátum) vagy táblázatosan rögzíti a tételeket.</li>
+                    <li>A rendszer tételenként ellenőrzi a számlaszámok formai érvényességét és kiszámítja a teljes végösszeget.</li>
+                    <li>A rendszer lefuttatja az összegzett fedezetellenőrzést.</li>
+                    <li>A felhasználó egyetlen megerősítéssel jóváhagyja a teljes csomagot.</li>
+                    <li>A rendszer tranzakcióként feldolgozza az utalásokat és audit naplót készít.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Ha a fájlban hibás tételek találhatók, a rendszer lehetőséget ad a hibás sorok javítására vagy kihagyására a helyes tételek indítása mellett.</li>
+            <li><strong>Kivételes esetek:</strong> Ha a forrásszámla egyenlege a teljes csomagösszegnél kisebb, a rendszer nem engedi elindítani a kötegelt megbízást.</li>
+            <li><strong>Kapcsolatok:</strong> 
+                <ul>
+                    <li>&lt;&lt;include&gt;&gt; Fedezet és számlastátusz ellenőrzése</li>
+                    <li>&lt;&lt;include&gt;&gt; Tranzakció audit naplózása</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>UC-05: Számlakivonat letöltése (PDF)</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> Az ügyfél hivatalos, lezárt havi kivonatot generál és tölt le PDF formátumban a választott számlájához.</li>
+            <li><strong>Aktorok:</strong> Ügyfél.</li>
+            <li><strong>Prekondíciók:</strong> Érvényes bejelentkezés, létező számlaforgalmi adatok a kért időszakban.</li>
+            <li><strong>Postkondíciók:</strong> A böngésző letölti a strukturált, aláírt PDF dokumentumot.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>Az ügyfél a számlakivonatok menüpontba lép.</li>
+                    <li>Kiválasztja az érintett számlát, az évet és a hónapot.</li>
+                    <li>A letöltés gombra kattint.</li>
+                    <li>A szerver lekéri az adott havi nyitóegyenleget, forgalmi tételeket és záróegyenleget.</li>
+                    <li>A háttérrendszer összeállítja a formázott PDF dokumentumot és átadja a böngészőnek mentésre.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Egyedi időintervallumra szóló időközi forgalmi kimutatás kérése.</li>
+            <li><strong>Kivételes esetek:</strong> Ha az adott hónapban nem történt számlamozgás, a rendszer 0 forgalmú nullás igazolást állít ki.</li>
+            <li><strong>Kapcsolatok:</strong> Nincs al-use case függősége.</li>
+        </ul>
+
+        <h4>UC-06: Bankkártya és napi limitek kezelése</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> A lakossági ügyfél megtekinti a bankszámlájához rendelt bankkártya adatait, módosítja a napi készpénzfelvételi és vásárlási limiteket, vagy ideiglenesen letiltja a kártyát.</li>
+            <li><strong>Aktorok:</strong> Lakossági Ügyfél.</li>
+            <li><strong>Prekondíciók:</strong> Érvényes bejelentkezés, a számlához kapcsolt aktív bankkártya.</li>
+            <li><strong>Postkondíciók:</strong> Az új limitek azonnal életbe lépnek az adatbázisban, tiltás esetén a kártya státusza inaktívra változik.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>A lakossági ügyfél a kártyakezelés menüpontba navigál.</li>
+                    <li>Kiválasztja a módosítani kívánt bankkártyát.</li>
+                    <li>Átírja a napi vásárlási vagy készpénzfelvételi limit mezőjét a megengedett maximumon belül.</li>
+                    <li>Kattint a mentés gombra.</li>
+                    <li>A rendszer rögzíti az új értékeket és visszaigazoló üzenetet küld.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Az ügyfél a kártya azonnali ideiglenes zárolását választja elvesztés gyanúja miatt. A rendszer megerősítő kérdés után letiltja a kártyás műveleteket.</li>
+            <li><strong>Kivételes esetek:</strong> A bank által meghatározott abszolút biztonsági maximumnál nagyobb limit megadása nem engedélyezett.</li>
+            <li><strong>Kapcsolatok:</strong> &lt;&lt;include&gt;&gt; Tranzakció audit naplózása.</li>
+        </ul>
+
+        <h4>UC-07: Devizaárfolyamok megtekintése</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> Az ügyfél tájékozódik az aktuális vételi, eladási és középárfolyamokról a támogatott devizanemekben (EUR, USD, CHF, GBP).</li>
+            <li><strong>Aktorok:</strong> Ügyfél.</li>
+            <li><strong>Prekondíciók:</strong> Nincs szigorú előfeltétel, publikusan és bejelentkezve is elérhető.</li>
+            <li><strong>Postkondíciók:</strong> A képernyőn megjelenik az utolsó frissítés időpontjával ellátott árfolyamtábla.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>A felhasználó az árfolyamok fülre kattint.</li>
+                    <li>A rendszer lekéri az adatbázisban tárolt legfrissebb árfolyamrekordokat.</li>
+                    <li>Megjelenik a rendezett táblázat a vételi, eladási értékekkel és a napi változás százalékával.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Grafikonos árfolyamtörténet lekérése az elmúlt 30 napra.</li>
+            <li><strong>Kivételes esetek:</strong> Ha a külső szinkronizáció átmenetileg szünetel, a felület jelzi az utolsó érvényes állapot idejét.</li>
+            <li><strong>Kapcsolatok:</strong> Nincs közvetlen reláció.</li>
+        </ul>
+
+        <h4>UC-08: Hitelkérelem benyújtása</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> Az ügyfél az online felületen kitölti a digitális hitelkérelmet, megadja az igényelt összeget, futamidőt, havi nettó jövedelmét, és beküldi bírálatra.</li>
+            <li><strong>Aktorok:</strong> Ügyfél.</li>
+            <li><strong>Prekondíciók:</strong> Érvényes bejelentkezés, legalább 6 hónapos aktív ügyfélelőzmény.</li>
+            <li><strong>Postkondíciók:</strong> Új hiteligénylési rekord jön létre elbírálásra váró státusszal.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>Az ügyfél a hitelkalkulátor oldalon beállítja az összeget és a futamidőt.</li>
+                    <li>A kalkulátor valós időben kiszámolja a várható törlesztőrészletet és a THM mértékét.</li>
+                    <li>Az ügyfél kitölti a munkáltatói és jövedelmi adatlapot.</li>
+                    <li>Elfogadja az adatkezelési nyilatkozatot és beküldi a kérelmet.</li>
+                    <li>A rendszer rögzíti az adatokat és azonosító számot ad a kérelemhez.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Az ügyfél elmenti a kérelmet piszkozatként későbbi folytatás céljából.</li>
+            <li><strong>Kivételes esetek:</strong> Ha a kalkulált törlesztőrészlet meghaladja a jogszabályi jövedelemarányos törlesztési mutatót (JTM), a rendszer figyelmeztet, és alacsonyabb összeg megadását kéri.</li>
+            <li><strong>Kapcsolatok:</strong> &lt;&lt;include&gt;&gt; Tranzakció audit naplózása.</li>
+        </ul>
+
+        <h4>UC-09: Hitelkérelem elbírálása</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> A banki ügyintéző megvizsgálja a beérkezett hitelkérelmet, és dönt annak jóváhagyásáról, elutasításáról vagy hiánypótlás elrendeléséről.</li>
+            <li><strong>Aktorok:</strong> Banki Ügyintéző.</li>
+            <li><strong>Prekondíciók:</strong> Érvényes ügyintézői bejelentkezés, létező nyitott kérelem.</li>
+            <li><strong>Postkondíciók:</strong> A kérelem státusza módosul, jóváhagyás esetén a hitelösszeg azonnal jóváírásra kerül a számlán és megindul a kamatozás.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>Az ügyintéző megnyitja a bírálati munkafelületet.</li>
+                    <li>Kiválaszt egy elbírálásra váró kérelmet a sorból.</li>
+                    <li>Áttekinti az igénylő jövedelmi adatait és számlamúltját.</li>
+                    <li>Kiválasztja a döntést (Jóváhagyás / Elutasítás / Hiánypótlás).</li>
+                    <li>Megerősíti a döntést digitális aláírásával.</li>
+                    <li>Jóváhagyáskor a rendszer megterheli a banki forrásfiókot és jóváírja az összeget az ügyfélnél.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Elutasítás esetén az ügyintéző köteles megadni a formai indoklást, amelyről az ügyfél értesítést kap.</li>
+            <li><strong>Kivételes esetek:</strong> Ha az ügyfél számlája időközben zárolásra került, a jóváhagyás nem hajtható végre.</li>
+            <li><strong>Kapcsolatok:</strong> &lt;&lt;include&gt;&gt; Tranzakció audit naplózása.</li>
+        </ul>
+
+        <h4>UC-10: Árfolyamok automatikus frissítése</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> A rendszer háttérszolgáltatása ütemezetten lekérdezi a legújabb devizaárfolyamokat a külső szolgáltatótól és frissíti a belső adatbázist.</li>
+            <li><strong>Aktorok:</strong> Külső Árfolyam API (System Actor).</li>
+            <li><strong>Prekondíciók:</strong> Működő külső API végpont és internetkapcsolat.</li>
+            <li><strong>Postkondíciók:</strong> Az adatbázisban új árfolyamrekordok keletkeznek friss időbélyeggel.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>A szerveroldali időzítő feladat (Spring Boot Scheduler) óránként lefut.</li>
+                    <li>HTTPS REST hívást intéz a külső árfolyam-szolgáltató felé.</li>
+                    <li>Fogadja a válasz JSON objektumot.</li>
+                    <li>Kiszámítja a banki vételi, eladási és középárfolyamokat a meghatározott marzs alapján.</li>
+                    <li>Mentést végez a PostgreSQL adatbázis árfolyamtáblájába.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Manuális kényszerített frissítés kezdeményezése rendszeradminisztrátor által.</li>
+            <li><strong>Kivételes esetek:</strong> Ha a külső szerver 500-as hibát ad vagy nem érhető el, a rendszer az utolsó ismert árfolyamot tekinti érvényesnek és hibariasztást naplóz.</li>
+            <li><strong>Kapcsolatok:</strong> Nincs közvetlen al-use case.</li>
+        </ul>
+
+        <h4>UC-11: Felhasználói fiókok kezelése</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> A rendszeradminisztrátor felügyeli a felhasználói adatbázist, jogosultságokat rendel a dolgozókhoz, és feloldja a blokkolt fiókokat.</li>
+            <li><strong>Aktorok:</strong> Rendszeradminisztrátor.</li>
+            <li><strong>Prekondíciók:</strong> Érvényes rendszeradminisztrátori bejelentkezés (UC-01).</li>
+            <li><strong>Postkondíciók:</strong> A kiválasztott felhasználó adatai vagy státusza módosul az adatbázisban.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>Az adminisztrátor belép az adminisztrációs felületre.</li>
+                    <li>Kikeresi a felhasználót e-mail cím vagy azonosító alapján.</li>
+                    <li>Módosítja a státuszt (aktív, inaktív, zárolt) vagy a jogosultsági csoportot (ügyfél, ügyintéző, admin).</li>
+                    <li>Mentést hajt végre.</li>
+                    <li>A rendszer rögzíti a módosítást a biztonsági naplóban.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> Jelszó-visszaállítási hivatkozás manuális kiküldése az ügyfél kérésére.</li>
+            <li><strong>Kivételes esetek:</strong> Saját adminisztrátori jogosultság visszavonása a rendszer által tiltott művelet.</li>
+            <li><strong>Kapcsolatok:</strong> &lt;&lt;include&gt;&gt; Tranzakció audit naplózása.</li>
+        </ul>
+
+        <h4>UC-12: Audit naplók ellenőrzése</h4>
+        <ul>
+            <li><strong>Rövid leírás:</strong> A jogosult személyek (ügyintéző és adminisztrátor) keresnek és szűrnek a rendszer esemény- és tranzakciós naplóiban hibakeresési és biztonsági célból.</li>
+            <li><strong>Aktorok:</strong> Banki Ügyintéző, Rendszeradminisztrátor.</li>
+            <li><strong>Prekondíciók:</strong> Belső dolgozói vagy adminisztrátori jogosultság.</li>
+            <li><strong>Postkondíciók:</strong> A naplóbejegyzések megjelennek a képernyőn, igény szerint exportálhatók.</li>
+            <li><strong>Szokásos működés (Main Flow):</strong>
+                <ol>
+                    <li>A munkatárs megnyitja az Audit Log menüpontot.</li>
+                    <li>Beállítja a szűrési feltételeket (időintervallum, felhasználó, IP cím, eseménytípus: belépés, átutalás, limitek módosítása).</li>
+                    <li>Kattint a keresés gombra.</li>
+                    <li>A rendszer lekéri és listázza a naplóelemeket a pontos időbélyeggel és eredménnyel.</li>
+                </ol>
+            </li>
+            <li><strong>Alternatív esetek:</strong> A naplóeredmények letöltése CSV vagy PDF formátumban belső ellenőrzéshez.</li>
+            <li><strong>Kivételes esetek:</strong> Az audit napló rekordjai kizárólag olvashatók, azok törlése vagy módosítása programozottan tiltott.</li>
+            <li><strong>Kapcsolatok:</strong> Nincs al-use case kapcsolata.</li>
+        </ul>
+
+        <h4>Beágyazott al-funkciók (Include és Extend use case-ek):</h4>
+        <ul>
+            <li><strong>Fedezet és számlastátusz ellenőrzése (&lt;&lt;include&gt;&gt;):</strong> Minden pénzmozgást kezdeményező művelet (UC-03, UC-04) előtt kötelezően lefut. Megvizsgálja, hogy a forrásszámla nincs-e zárolva vagy inkasszó alatt, és a terhelendő összeg a tranzakciós díjjal együtt nem haladja-e meg a szabad egyenleget.</li>
+            <li><strong>Devizakonverzió végrehajtása (&lt;&lt;extend&gt;&gt;):</strong> Csak akkor kapcsolódik az átutaláshoz (UC-03), amennyiben a forrásszámla és a megadott utalási összeg pénzneme eltér. Az aktuális eladási árfolyam alapján kiszámolja az átváltási ellenértéket, és mindkét értéket rögzíti a bizonylaton.</li>
+            <li><strong>Tranzakció audit naplózása (&lt;&lt;include&gt;&gt;):</strong> Minden lényeges pénzügyi, adminisztrációs és biztonsági állapotváltozáskor (UC-03, UC-04, UC-06, UC-08, UC-09, UC-11) automatikusan lefutó háttérművelet, amely időbélyeggel, felhasználói azonosítóval és IP címmel elmenti a tranzakció részleteit.</li>
+        </ul>
     </div>
 
     <a name="hasznalhatosag"></a><h2>4. Használhatóság (Usability)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <p>A banki rendszer kezelhetőségét az alábbi nem funkcionális elvárások határozzák meg:</p>
+        <ul>
+            <li><strong>Betanulási idő:</strong> Egy átlagos digitális jártassággal rendelkező lakossági ügyfélnek legfeljebb 10 perc szükséges a kezelőfelület teljes megismeréséhez és az első önálló átutalás elindításához. Banki ügyintézők számára a bírálati felület használata maximum 2 órás oktatással elsajátítható.</li>
+            <li><strong>Felületi ergonómia:</strong> A felület kialakítása követi a modern webes sztenderdeket. Az űrlapok tiszta logikai felépítésűek, a fontos műveletek (átutalás, mentés) jól látható akciógombokkal rendelkeznek. A reszponzív Tailwind CSS keretrendszer biztosítja a hibátlan megjelenést asztali monitoron, táblagépen és okostelefonon egyaránt.</li>
+            <li><strong>Hibamegelőzés és beviteli támogatás:</strong> A rendszer a kritikus adatbeviteleknél (pl. 24 jegyű belföldi számlaszám) már gépelés közben formailag ellenőrzi az adatokat. Hibás bevitel esetén pontos, piros színű hibaüzenet figyelmezteti a felhasználót, megelőzve a téves átutalások indítását.</li>
+            <li><strong>Jóváhagyási lépések:</strong> Pénzügyi megbízás nem indítható el véletlen kattintással. Minden pénzmozgás előtt egy összegző párbeszédablak jelenik meg, amely rákérdez a jóváhagyásra a tranzakció véglegesítése előtt.</li>
+            <li><strong>Nyelv és terminológia:</strong> A felület teljesen magyar nyelvű, közérthető banki kifejezéseket alkalmaz, elkerülve a feleslegesen bonyolult belső szakzsargont.</li>
+        </ul>
     </div>
 
     <a name="megbizhatosag"></a><h2>5. Megbízhatóság (Reliability)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <p>A pénzügyi adatok biztonsága és folyamatos elérhetősége miatt a rendszerrel szemben támasztott megbízhatósági követelmények a következők:</p>
+        <ul>
+            <li><strong>Rendelkezésre állás (Availability):</strong> A rendszer tervezett rendelkezésre állási ideje évi 99,5% a tervezett karbantartási ablakokon kívül (amelyek kizárólag éjszaka, hajnali 01:00 és 04:00 között végezhetők).</li>
+            <li><strong>MTBF (Mean Time Between Failures):</strong> A kritikus rendszerösszeomlások közötti átlagos idő elvárt minimális értéke legalább 720 üzemóra (30 nap).</li>
+            <li><strong>MTTR (Mean Time To Repair):</strong> Váratlan hardver- vagy szoftverhiba esetén a rendszer helyreállításának átlagos ideje nem haladhatja meg a 60 percet a meleg tartalék (hot standby) adatbázis-architektúrának köszönhetően.</li>
+            <li><strong>ACID adatbázis garancia:</strong> A PostgreSQL relációs adatbázis garantálja a tranzakciók atomiságát, konzisztenciáját, izolációját és tartósságát. Pénzküldés során ha a célszámla jóváírása bármilyen hiba miatt meghiúsul, a forrásszámla terhelése automatikusan visszagörgetésre (rollback) kerül.</li>
+            <li><strong>Biztonsági mentés:</strong> Az adatbázisról minden nap éjfélkor automatikus teljes mentés készül, a tranzakciós naplókról (WAL) pedig 15 percenként inkrementális mentés mentődik dedikált, elkülönített háttértárra.</li>
+        </ul>
     </div>
 
     <a name="teljesitmeny"></a><h2>6. Teljesítmény (Performance)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <p>A banki alkalmazás sebességére és terhelhetőségére az alábbi mutatószámok érvényesek:</p>
+        <ul>
+            <li><strong>Válaszidők:</strong> Az egyszerű olvasási lekérdezések (pl. számlaegyenleg, devizaárfolyamok betöltése) 95%-a 1,0 másodpercen belül megjelenik a kliensen. A tranzakció-feldolgozás szerveroldali átfutási ideje nem haladhatja meg a 2,0 másodpercet.</li>
+            <li><strong>Azonnali fizetési elszámolás:</strong> A belföldi eseti forint átutalások teljes feldolgozása a Magyar Nemzeti Bank Azonnali Fizetési Rendszerének (AFR) megfelelően legfeljebb 5 másodperc alatt teljesül.</li>
+            <li><strong>Áteresztőképesség:</strong> A backend architektúra képes másodpercenként legalább 100 egyidejű tranzakció hibátlan feldolgozására.</li>
+            <li><strong>Párhuzamos terhelés:</strong> A webes kiszolgáló és a REST API legalább 500 egyidejűleg bejelentkezett, aktív felhasználói munkamenetet kezel zökkenőmentesen a válaszidők romlása nélkül.</li>
+            <li><strong>Erőforrás-felhasználás:</strong> Kliensoldalon az alkalmazás memóriahasználata nem haladhatja meg a 150 MB-ot modern böngészőkben futtatva. Szerveroldalon az adatbázis-kapcsolatok száma optimalizált Connection Pool (HikariCP) segítségével van kordában tartva.</li>
+        </ul>
     </div>
 
     <a name="tamogatottsag"></a><h2>7. Támogatottság (Supportability)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <p>A rendszer hosszú távú üzemeltetését és továbbfejleszthetőségét a következő elvek biztosítják:</p>
+        <ul>
+            <li><strong>Kódolási konvenciók:</strong> A szerveroldali Java kód a szabványos Google Java Style Guide irányelveit követi, míg a kliensoldali React kód ESLint és Prettier konfigurációval van egységesítve. A Clean Code elvek betartása kötelező minden csapattag számára.</li>
+            <li><strong>Moduláris architektúra:</strong> A rendszer laza csatolású rétegekből épül fel. A felhasználói felület, az üzleti logikát megvalósító REST szolgáltatások és az adatperzisztens réteg szigorúan el van különítve egymástól.</li>
+            <li><strong>Strukturált naplózás:</strong> A szerveroldali logolás az SLF4J és Logback keretrendszerrel történik. Négy külön naplózási szint van definiálva (DEBUG, INFO, WARN, ERROR). A hibaüzenetekhez egyedi hibaazonosító kód és stack trace tartozik, megkönnyítve a support csapat munkáját.</li>
+            <li><strong>Verziókövetés és CI/CD:</strong> A teljes forráskód Git repozitóriumban van nyilvántartva funkcióágakkal (GitFlow). Az automatizált build és tesztfolyamatok biztosítják a hibamentes frissítéseket.</li>
+        </ul>
     </div>
 
     <a name="tervezesi-korlatozasok"></a><h2>8. Tervezési korlátozások (Design Constraints)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <p>A fejlesztés során az alábbi kötelező technológiai és módszertani korlátozásokat kell alkalmazni:</p>
+        <ul>
+            <li><strong>Architektúra:</strong> Háromrétegű webes kliens-szerver architektúra, amelyben a megjelenítésért a böngésző, az üzleti logikáért a Spring Boot REST API, az adattárolásért a relációs adatbázis felel.</li>
+            <li><strong>Programozási nyelvek és eszközök:</strong> A szerveroldalon Java (JDK 17+) Spring Boot keretrendszerrel, kliensoldalon JavaScript (ES6+) és React könyvtár Tailwind CSS formázással. Az adatbázis kizárólag nyílt forráskódú PostgreSQL (15+).</li>
+            <li><strong>Hitelesítési mechanizmus:</strong> A munkamenetek kezelése állapotmentes (stateless) módon, digitálisan aláírt JSON Web Tokenekkel (JWT) történik. Tilos a szerver memóriájában állapotot tartó session alapú azonosítás.</li>
+            <li><strong>Jelszókezelés:</strong> A jelszavak tárolására kötelező a Bcrypt algoritmus használata legalább 12-es munkaállománnyal (salt rounds). A nyers jelszavak még a szerveroldali logokban sem jelenhetnek meg.</li>
+            <li><strong>Módszertan:</strong> A csapat a projekt során az agilis Scrum és Kanban keretrendszerek alapelveit követi, kéthetes sprintekkel és folyamatos feladatkövetéssel.</li>
+        </ul>
     </div>
 
-    <a name="help-rendszer"></a><h2>9. On-line dokumentáció és Help rendszer (Online User Documentation and Help System)</h2>
+    <a name="help-rendszer"></a><h2>9. On-line dokumentáció és Help rendszer</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <p>A felhasználók és az üzemeltetők munkáját a következő segédanyagok támogatják:</p>
+        <ul>
+            <li><strong>Integrált felhasználói dokumentáció:</strong> A weboldalról közvetlenül elérhető a részletes <a href="felhasznaloi_dokumentacio.html">Felhasználói kézikönyv</a>, amely képernyőképekkel és pontokba szedett magyarázatokkal mutatja be az összes funkció működését.</li>
+            <li><strong>Mezőszintű információs buborékok (Tooltip-ek):</strong> A bonyolultabb beviteli mezők mellett (például CDV kód, IBAN formátum, THM, napi limit) kérdőjel ikonok találhatók, amelyek fölé húzva az egeret azonnali magyarázat jelenik meg.</li>
+            <li><strong>Értelmezhető hibaüzenetek:</strong> Sikertelen művelet esetén a rendszer nem általános hibakódot ad, hanem emberi nyelven megfogalmazott leírást arról, hogy mi a hiba oka (pl. "A megadott bankszámlaszám ellenőrző kódja érvénytelen" vagy "A tranzakció fedezethiány miatt elutasítva").</li>
+        </ul>
     </div>
 
     <a name="kesz-komponensek"></a><h2>10. Felhasznált kész komponensek (Third-party Components)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <p>A rendszer fejlesztéséhez kizárólag megbízható, széles körben támogatott, nyílt forráskódú szoftverkomponenseket használunk:</p>
+        <ul>
+            <li><strong>Java Spring Boot (v3.x):</strong> Vállalati szintű háttér-keretrendszer, beépített Tomcat szerverrel és Spring Web MVC modulokkal. Licenc: Apache 2.0.</li>
+            <li><strong>Spring Security:</strong> Biztonsági keretrendszer az engedélyezés, hitelesítés és a végpontok védelmének kezelésére. Licenc: Apache 2.0.</li>
+            <li><strong>JJWT (Java JWT):</strong> Digitálisan aláírt HMAC SHA-256 tokenek generálására és ellenőrzésére szolgáló könyvtár. Licenc: Apache 2.0.</li>
+            <li><strong>React (v18.x):</strong> Kliensoldali komponensalapú megjelenítő könyvtár. Licenc: MIT.</li>
+            <li><strong>Tailwind CSS (v3.x):</strong> Segédosztály-alapú CSS keretrendszer a letisztult, reszponzív felületek építéséhez. Licenc: MIT.</li>
+            <li><strong>PostgreSQL JDBC Driver:</strong> Java és a PostgreSQL adatbázis közötti szabványos kapcsolatkezelő komponens. Licenc: BSD 2-Clause.</li>
+            <li><strong>Külső árfolyam REST API (pl. exchangerate-api.com vagy MNB publikus API):</strong> Valós idejű devizapiaci árfolyamadatok lekérdezéséhez használt külső webes interfész.</li>
+        </ul>
     </div>
 
     <a name="interfeszek"></a><h2>11. Interfészek (Interfaces)</h2>
     <div class="content-box">
-        <h3>11.1. Felhasználói interfészek (User Interfaces)</h3>
-        <p>Elkészítési folyamat alatt.</p>
-        
-        <h3>11.2. Hardver interfészek (Hardware Interfaces)</h3>
-        <p>Elkészítési folyamat alatt.</p>
-        
-        <h3>11.3. Szoftver interfészek (Software Interfaces)</h3>
-        <p>Elkészítési folyamat alatt.</p>
-        
-        <h3>11.4. Kommunikációs interfészek (Communications Interfaces)</h3>
-        <p>Elkészítési folyamat alatt.</p>
+        <a name="ui-interfesz"></a><h3>11.1. Felhasználói interfészek</h3>
+        <p>A felhasználói felület letisztult, professzionális pénzintézeti dizájnt követ. A képernyő felső részén a navigációs menü, a bejelentkezett felhasználó neve és a kijelentkezés gomb található. A központi tartalomterület kártyákra bontva jeleníti meg a számlaegyenlegeket és a tranzakciókat. A reszponzív rácsos elrendezés (CSS Grid és Flexbox) automatikusan igazodik a képernyőmérethez: asztali gépen többhasábos, mobilon egyhasábos függőleges nézetre vált.</p>
+
+        <a name="hw-interfesz"></a><h3>11.2. Hardver interfészek</h3>
+        <p>A szoftver nem igényel speciális céleszközt vagy hardveres terminált. Standard x86-64 architektúrájú szervereken vagy felhő alapú virtuális gépeken fut. Kliensoldalon bármilyen szabványos interneteléréssel bíró PC, laptop, táblagép vagy okostelefon használható.</p>
+
+        <a name="sw-interfesz"></a><h3>11.3. Szoftver interfészek</h3>
+        <ul>
+            <li><strong>Adatbázis interfész:</strong> A Spring Data JPA és Hibernate rétegen keresztül, JDBC kapcsolaton át kommunikál a PostgreSQL adatbázissal. A kapcsolatok kezelését a HikariCP connection pool végzi a nagy terhelhetőség érdekében.</li>
+            <li><strong>Külső Árfolyam API interfész:</strong> Szabványos HTTPS REST hívásokkal kommunikál a külső devizaszolgáltatóval. A szerver JSON formátumban fogadja a naprakész valutaárfolyamokat, és lementi az árfolyamtáblába.</li>
+        </ul>
+
+        <a name="comm-interfesz"></a><h3>11.4. Kommunikációs interfészek</h3>
+        <p>A kliens és a szerver közötti teljes kommunikáció kizárólag titkosított HTTPS protokollon keresztül zajlik, a 443-as szabványos porton, TLS 1.3 titkosítással. Az adatok átadása RESTful végpontokon át, szabványos JSON formátumú kérésekkel és válaszokkal történik. Minden védett kérés fejlécében (Authorization Header) kötelezően szerepel a "Bearer &lt;JWT&gt;" azonosító token.</p>
     </div>
 
     <a name="szabvanyok"></a><h2>12. Alkalmazott szabványok (Applicable Standards)</h2>
     <div class="content-box">
-        <h3>12.1. Kötelezően alkalmazandó szabványok (Mandatory Standards)</h3>
-        <p>Elkészítési folyamat alatt.</p>
-        
-        <h3>12.2. Választás alapján alkalmazott szabványok (Optional Standards)</h3>
-        <p>Elkészítési folyamat alatt.</p>
+        <a name="kotelezo-szabvanyok"></a><h3>12.1. Kötelezően alkalmazandó szabványok</h3>
+        <ul>
+            <li><strong>Azonnali Fizetési Rendszer (AFR) előírásai:</strong> A Magyar Nemzeti Bank rendelete alapján az 50 millió forint alatti eseti forint átutalásoknak az év minden napján, 24 órában 5 másodpercen belül teljesülniük kell.</li>
+            <li><strong>PSD2 (Revised Payment Services Directive):</strong> Az Európai Unió pénzforgalmi irányelve, amely kötelezővé teszi az erős ügyfél-hitelesítést (SCA / 2FA) a pénzügyi műveleteknél és a fiókhozzáférésnél.</li>
+            <li><strong>GDPR (General Data Protection Regulation):</strong> Az Európai Unió általános adatvédelmi rendelete. A személyes adatok kezelése kizárólag jogszerű célból, a hozzájárulás alapján történik. Az ügyfél kérésére a rendszer biztosítja az adathordozhatóságot és az elfeledtetés jogát (a pénzügyi megőrzési törvények korlátain belül).</li>
+            <li><strong>Bcrypt és SHA-256 kriptográfiai szabványok:</strong> A jelszavak és digitális aláírások iparági biztonsági sztenderdek szerinti hash-elése és titkosítása.</li>
+        </ul>
+
+        <a name="valasztott-szabvanyok"></a><h3>12.2. Választás alapján alkalmazott szabványok</h3>
+        <ul>
+            <li><strong>RESTful API architektúra:</strong> Szabványos HTTP metódusok (GET, POST, PUT, DELETE) és állapotkódok (200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 500 Server Error) alkalmazása.</li>
+            <li><strong>W3C Web Standards:</strong> Szemantikus HTML5 és CSS3 szabványok használata a széles körű böngésző-kompatibilitás érdekében.</li>
+            <li><strong>OWASP Top 10:</strong> A webes alkalmazások legfőbb biztonsági kockázatai (SQL Injection, XSS, CSRF, Broken Access Control) elleni szigorú védelmi irányelvek betartása a forráskódban.</li>
+        </ul>
     </div>
 
     <a name="mellekletek"></a><h2>13. Mellékletek (Appendix)</h2>
     <div class="content-box">
-        <p>Elkészítési folyamat alatt.</p>
+        <p>A szoftver követelmény specifikációhoz kapcsolódó kiegészítő anyagok és források jegyzéke:</p>
+        <ul>
+            <li><strong>1. sz. Melléklet:</strong> A Heger Kft. (H1) Projekt terve: <a href="projekt_terv.html">projekt_terv.html</a></li>
+            <li><strong>2. sz. Melléklet:</strong> A Heger Kft. (H2) Vízió dokumentuma és ER adatbázis diagramja: <a href="vizio_dokumentum.html">vizio_dokumentum.html</a></li>
+            <li><strong>3. sz. Melléklet:</strong> A Heger Kft. (H3) Felhasználói dokumentációja (kézikönyv v1.0): <a href="felhasznaloi_dokumentacio.html">felhasznaloi_dokumentacio.html</a></li>
+            <li><strong>4. sz. Melléklet:</strong> A rendszer részletes Fogalomtára: <a href="szotar.html">szotar.html</a></li>
+            <li><strong>5. sz. Melléklet:</strong> A csapat munkáját nyilvántartó Munkanapló: <a href="munkanaplo.html">munkanaplo.html</a></li>
+            <li><strong>6. sz. Melléklet:</strong> Dr. Mileff Péter tantárgyi útmutatója és SRS sablonja (Miskolci Egyetem, 2006).</li>
+        </ul>
     </div>
 
     <div class="margin-block">

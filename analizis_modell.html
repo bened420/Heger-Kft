@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>(H4) Analízis modell</title>
+</head>
+<body class="center-text">
+    <h1>A mi csapatunk: Heger Kft.</h1>
+    <h1>A választott téma: Banki szoftver</h1>
+
+    <h1 class="margin-block">(H4) Analízis modell</h1>
+
+    <div class="margin-block">
+        Gyakorlatvezető oktató:
+        <h2>Sátán Ádám</h2>
+    </div>
+
+    <h2>Csoportunk tagjai:</h2>
+    <table>
+        <tr> <td>Baranyai Benedek</td> <td>BCOMKG</td> <td>benedek.baranyai@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Harik Zoltán Örs</td> <td>POZY70</td> <td>zoltan.ors.harik@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Radó Attila</td> <td>JX93VX</td> <td>attila.rado@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Ötvös Csongor</td> <td>RKOW9K</td> <td>csongor.otvos@student.uni-miskolc.hu</td> </tr>
+        <tr> <td>Csóka Nándor Gábor</td> <td>MDX9OH</td> <td>nandor.gabor.csoka@student.uni-miskolc.hu</td> </tr>
+    </table>
+
+    <div class="right-text margin-block">Dátum: 2026-11-18</div>
+
+    <h2>A dokumentum története:</h2>
+    <table>
+        <tr> <th>Dátum</th> <th>Verziószám</th> <th>Rövid leírás</th> <th>Módosította</th> </tr>
+        <tr>
+            <td>2026-11-15</td>
+            <td>0.5</td>
+            <td>A kezdeti osztálydiagram, az osztálylista és a funkcionális alrendszerekre bontás elkészítése az SRS alapján.</td>
+            <td>Baranyai Benedek</td>
+        </tr>
+        <tr>
+            <td>2026-11-16</td>
+            <td>1.0</td>
+            <td>Az 1.0-s verzió lezárása, alrendszerek pontosítása és csomagdiagram elkészítése.</td>
+            <td>Radó Attila</td>
+        </tr>
+        <tr>
+            <td>2026-11-17</td>
+            <td>1.1</td>
+            <td>A Felhasználó- és Jogosultságkezelő, valamint a Számla- és Pénzforgalmi alrendszer statikus, dinamikus és funkcionális modelljének kidolgozása.</td>
+            <td>Harik Zoltán Örs, Csóka Nándor Gábor</td>
+        </tr>
+        <tr>
+            <td>2026-11-18</td>
+            <td>1.2</td>
+            <td>A Deviza- és Árfolyamkezelő, valamint a Hiteligénylési és Bírálati alrendszerek modellezése, teljes osztálylisták és UML ábrák véglegesítése.</td>
+            <td>Baranyai Benedek, Ötvös Csongor</td>
+        </tr>
+    </table>
+
+    <h2>Tartalomjegyzék:</h2>
+    <div class="content-box">
+        <ul>
+            <li><a href="#bevezetes">1. Bevezetés</a></li>
+            <li><a href="#kezdeti-osztalydiagram">2. Kezdeti osztálydiagram</a>
+                <ul>
+                    <li><a href="#kezdeti-diagram-abra">2.1. Osztálydiagram</a></li>
+                    <li><a href="#kezdeti-osztalyok">2.2. Osztályok felsorolása</a></li>
+                    <li><a href="#alrendszerek">2.3. Alrendszerek</a>
+                        <ul>
+                            <li><a href="#alr-1-leiras">2.3.1. Felhasználó- és Jogosultságkezelő alrendszer</a></li>
+                            <li><a href="#alr-2-leiras">2.3.2. Számla- és Pénzforgalmi alrendszer</a></li>
+                            <li><a href="#alr-3-leiras">2.3.3. Deviza- és Árfolyamkezelő alrendszer</a></li>
+                            <li><a href="#alr-4-leiras">2.3.4. Hiteligénylési és Bírálati alrendszer</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#alrendszer-1">3. Felhasználó- és Jogosultságkezelő alrendszer modellje</a>
+                <ul>
+                    <li><a href="#alr1-statikus">3.1. Statikus modell</a></li>
+                    <li><a href="#alr1-dinamikus">3.2. Dinamikus modell</a></li>
+                    <li><a href="#alr1-funkcionalis">3.3. Funkcionális modell</a></li>
+                    <li><a href="#alr1-operaciok">3.4. Operációk azonosítása</a></li>
+                    <li><a href="#alr1-osztalydiagram">3.5. Az analízis modell osztálydiagramja</a></li>
+                    <li><a href="#alr1-osztalylista">3.6. Az analízis modell osztályainak listája</a></li>
+                </ul>
+            </li>
+            <li><a href="#alrendszer-2">4. Számla- és Pénzforgalmi alrendszer modellje</a>
+                <ul>
+                    <li><a href="#alr2-statikus">4.1. Statikus modell</a></li>
+                    <li><a href="#alr2-dinamikus">4.2. Dinamikus modell</a></li>
+                    <li><a href="#alr2-funkcionalis">4.3. Funkcionális modell</a></li>
+                    <li><a href="#alr2-operaciok">4.4. Operációk azonosítása</a></li>
+                    <li><a href="#alr2-osztalydiagram">4.5. Az analízis modell osztálydiagramja</a></li>
+                    <li><a href="#alr2-osztalylista">4.6. Az analízis modell osztályainak listája</a></li>
+                </ul>
+            </li>
+            <li><a href="#alrendszer-3">5. Deviza- és Árfolyamkezelő alrendszer modellje</a>
+                <ul>
+                    <li><a href="#alr3-statikus">5.1. Statikus modell</a></li>
+                    <li><a href="#alr3-dinamikus">5.2. Dinamikus modell</a></li>
+                    <li><a href="#alr3-funkcionalis">5.3. Funkcionális modell</a></li>
+                    <li><a href="#alr3-operaciok">5.4. Operációk azonosítása</a></li>
+                    <li><a href="#alr3-osztalydiagram">5.5. Az analízis modell osztálydiagramja</a></li>
+                    <li><a href="#alr3-osztalylista">5.6. Az analízis modell osztályainak listája</a></li>
+                </ul>
+            </li>
+            <li><a href="#alrendszer-4">6. Hiteligénylési és Bírálati alrendszer modellje</a>
+                <ul>
+                    <li><a href="#alr4-statikus">6.1. Statikus modell</a></li>
+                    <li><a href="#alr4-dinamikus">6.2. Dinamikus modell</a></li>
+                    <li><a href="#alr4-funkcionalis">6.3. Funkcionális modell</a></li>
+                    <li><a href="#alr4-operaciok">6.4. Operációk azonosítása</a></li>
+                    <li><a href="#alr4-osztalydiagram">6.5. Az analízis modell osztálydiagramja</a></li>
+                    <li><a href="#alr4-osztalylista">6.6. Az analízis modell osztályainak listája</a></li>
+                </ul>
+            </li>
+            <li><a href="#mellekletek">7. Mellékletek</a></li>
+        </ul>
+    </div>
+
+    <!-- 1. BEVEZETES -->
+    <a name="bevezetes"></a><h2>1. Bevezetés</h2>
+    <div class="content-box">
+        <p>Jelen dokumentum a Heger Kft. által fejlesztett <strong>Heger Banki Rendszer</strong> objektumorientált (OO) analízis modelljét tartalmazza. A dokumentáció közvetlenül a H3 fázisban elfogadott <a href="srs_dokumentum.html">Software követelmény specifikáció (SRS)</a> dokumentumra, az abban rögzített 12 használati esetre (UC-01 – UC-12), az aktorokra, valamint a funkcionális és nem funkcionális követelményekre épül.</p>
+        <p>Az analízis célja a problématér fogalmainak és objektumainak feltárása, a rendszer logikai alrendszerekre bontása, majd az egyes alrendszerek statikus (osztálydiagramok), dinamikus (szekvencia- és állapotdiagramok) és funkcionális (aktivitásdiagramok, folyamatleírások) modelljének elkészítése. Az itt meghatározott osztálystruktúra képezi a későbbi részletes rendszertervezés és az implementáció alapját.</p>
+    </div>
+
+    <!-- 2. KEZDETI OSZTALYDIAGRAM -->
+    <a name="kezdeti-osztalydiagram"></a><h2>2. Kezdeti osztálydiagram</h2>
+    <div class="content-box">
+        <p>Az SRS használati eseteinek és funkcionális követelményeinek elemzése alapján összegyűjtöttük a banki problématér legfontosabb osztályait, valamint a közöttük fennálló alapvető asszociációs, öröklődési és kompozíciós kapcsolatokat. Ebben a lépésben még csak az osztályok neve, szerepe és a főbb kapcsolatok szerepelnek.</p>
+
+        <a name="kezdeti-diagram-abra"></a><h3>2.1. Osztálydiagram</h3>
+        <p>A teljes rendszer kezdeti, elemzési szintű osztálydiagramját az alábbi ábra szemlélteti:</p>
+        <p class="center-text">
+            <img src="diagrams/kezdeti_osztalydiagram.svg" alt="Kezdeti osztálydiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="kezdeti-osztalyok"></a><h3>2.2. Osztályok felsorolása</h3>
+
+        <p><strong>Felhasznalo</strong><br>
+        A rendszer minden bejelentkezésre jogosult személyének közös ősosztálya, amely a hitelesítési adatokat és a fiókstátuszt fogja össze.</p>
+
+        <p><strong>Ugyfel</strong><br>
+        A banki szolgáltatásokat igénybe vevő ügyfelek általános osztálya, amely összeköti a felhasználót a bankszámlákkal és a hitelkérelmekkel.</p>
+
+        <p><strong>LakossagiUgyfel</strong><br>
+        Magánszemély ügyfelet reprezentáló osztály, aki jogosult a saját bankkártyáinak és napi használati limitjeinek kezelésére.</p>
+
+        <p><strong>VallalatiUgyfel</strong><br>
+        Céges ügyfelet reprezentáló osztály, aki nagy tételszámú tömeges átutalási csomagok indítására jogosult.</p>
+
+        <p><strong>BankiUgyintezo</strong><br>
+        A pénzintézet belső munkatársa, akinek felelőssége a beérkezett hitelkérelmek vizsgálata, elbírálása és az audit naplók ellenőrzése.</p>
+
+        <p><strong>Rendszeradminisztrator</strong><br>
+        Kiemelt jogosultságú üzemeltető, aki a felhasználói fiókok státuszát, jogosultságait és a biztonsági audit naplókat felügyeli.</p>
+
+        <p><strong>HitelesitesiMunkamenet</strong><br>
+        Egy sikeres bejelentkezéshez tartozó állapotmentes JWT munkamenetet reprezentál, tárolva a token azonosítóját, lejáratát és az ügyfél IP-címét.</p>
+
+        <p><strong>KetlepcsosKod</strong><br>
+        A kétlépcsős azonosítás (2FA) során kiküldött, egyszer használatos és időben korlátozott érvényességű ellenőrző kódot kezeli.</p>
+
+        <p><strong>AuditNaploBejegyzes</strong><br>
+        Minden kritikus pénzügyi, adminisztrációs és biztonsági eseményt megváltoztathatatlanul rögzítő naplórekord.</p>
+
+        <p><strong>Bankszamla</strong><br>
+        Az ügyfelek pénzügyi számláját reprezentálja a számlaszámmal, devizanemmel, könyvelt és elérhető egyenleggel, valamint a számlastátusszal.</p>
+
+        <p><strong>Tranzakcio</strong><br>
+        A számlákon végrehajtott pénzmozgások általános ősosztálya, amely rögzíti az összeget, devizanemet, időbélyeget és könyvelési státuszt.</p>
+
+        <p><strong>EsetiAtutalas</strong><br>
+        Belföldi forint vagy deviza alapú egyedi átutalási megbízás, amely tartalmazza a kedvezményezett adatait és a CDV-ellenőrzést.</p>
+
+        <p><strong>TomegesAtutalasCsomag</strong><br>
+        Vállalati ügyfelek által feltöltött vagy rögzített kötegelt átutalási megbízás, amely több tételt fog össze egy jóváhagyás alá.</p>
+
+        <p><strong>TomegesAtutalasTetel</strong><br>
+        Egy tömeges átutalási csomag önálló sora, amely egy konkrét kedvezményezettnek szóló utalási adatot és validációs állapotot tárol.</p>
+
+        <p><strong>Szamlakivonat</strong><br>
+        Egy adott számlához és hónaphoz tartozó lezárt forgalmi kimutatás, amelyből hiteles PDF dokumentum generálható.</p>
+
+        <p><strong>Bankkartya</strong><br>
+        A lakossági bankszámlához kapcsolódó fizetési kártya adatait, napi vásárlási/készpénzfelvételi limitjeit és aktív/zárolt állapotát kezeli.</p>
+
+        <p><strong>DevizaArfolyam</strong><br>
+        Egy devizapár aktuális és historikus vételi, eladási és középárfolyamát tároló entitás.</p>
+
+        <p><strong>ArfolyamFrissitoSzolgaltatas</strong><br>
+        Időzített háttérkomponens, amely a külső árfolyam API-tól lekért adatokból kiszámítja a banki marzsot és frissíti az árfolyamtáblát.</p>
+
+        <p><strong>DevizaKonverzio</strong><br>
+        Eltérő devizanemű átutalások esetén elvégzi és dokumentálja az adott pillanatnyi árfolyamon történő átváltást.</p>
+
+        <p><strong>Hitelkerelem</strong><br>
+        Az ügyfél által benyújtott digitális hiteligénylést, a jövedelmi adatokat, a futamidőt és a bírálati státuszt tárolja.</p>
+
+        <p><strong>HitelKalkulator</strong><br>
+        A hitelösszeg, futamidő és kamatláb alapján kiszámolja a havi törlesztőrészletet, a THM-et és ellenőrzi a JTM-korlátot.</p>
+
+        <p><strong>HitelBiralat</strong><br>
+        A banki ügyintéző által rögzített szakmai döntést (jóváhagyás, elutasítás, hiánypótlás), az indoklást és a digitális aláírást tartalmazza.</p>
+
+        <p><strong>HitelSzerzodes</strong><br>
+        Jóváhagyott hitelkérelem alapján létrejövő aktív hitelszerződés, amely a folyósítást és a törlesztési feltételeket rögzíti.</p>
+
+        <a name="alrendszerek"></a><h3>2.3. Alrendszerek</h3>
+        <p>A kezdeti osztálydiagram alapján a rendszert négy jól elkülöníthető funkcionális alrendszerre bontottuk. Az alrendszerek közötti kapcsolatokat és függőségeket az alábbi UML csomagdiagram mutatja be:</p>
+        <p class="center-text">
+            <img src="diagrams/alrendszerek_csomagdiagram.svg" alt="Alrendszerek csomagdiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr-1-leiras"></a><h4>2.3.1. Felhasználó- és Jogosultságkezelő alrendszer</h4>
+        <p>Felelős a felhasználók azonosításáért, a kétlépcsős hitelesítésért (2FA), a JWT alapú munkamenet-kezelésért, a fiókok adminisztrációjáért, valamint a rendszer szintű biztonsági audit naplózásért (UC-01, UC-11, UC-12).</p>
+        <p><strong>Osztályai:</strong> Felhasznalo, Ugyfel, LakossagiUgyfel, VallalatiUgyfel, BankiUgyintezo, Rendszeradminisztrator, HitelesitesiMunkamenet, KetlepcsosKod, AuditNaploBejegyzes.</p>
+
+        <a name="alr-2-leiras"></a><h4>2.3.2. Számla- és Pénzforgalmi alrendszer</h4>
+        <p>Kezeli a többdevizás bankszámlákat, az egyenleg- és tranzakciótörténet-lekérdezést, az eseti és tömeges átutalásokat, a havi PDF számlakivonatok generálását, valamint a lakossági bankkártyák limitjeit és zárolását (UC-02, UC-03, UC-04, UC-05, UC-06).</p>
+        <p><strong>Osztályai:</strong> Bankszamla, Tranzakcio, EsetiAtutalas, TomegesAtutalasCsomag, TomegesAtutalasTetel, Szamlakivonat, Bankkartya.</p>
+
+        <a name="alr-3-leiras"></a><h4>2.3.3. Deviza- és Árfolyamkezelő alrendszer</h4>
+        <p>Biztosítja a külső árfolyam API-val való időzített szinkronizációt, a banki vételi/eladási árfolyamok számítását és tárolását, valamint az átutalásokhoz kapcsolódó valós idejű devizakonverziót (UC-07, UC-10, devizakonverzió extend).</p>
+        <p><strong>Osztályai:</strong> DevizaArfolyam, ArfolyamFrissitoSzolgaltatas, KulsoArfolyamKliens, DevizaKonverzio.</p>
+
+        <a name="alr-4-leiras"></a><h4>2.3.4. Hiteligénylési és Bírálati alrendszer</h4>
+        <p>Támogatja a digitális hitelkalkulációt, a JTM-ellenőrzést, a hitelkérelmek benyújtását és piszkozatként mentését, valamint az ügyintézői hitelbírálatot és a jóváhagyott összeg folyósítását (UC-08, UC-09).</p>
+        <p><strong>Osztályai:</strong> Hitelkerelem, HitelKalkulator, HitelBiralat, HitelSzerzodes.</p>
+    </div>
+
+    <!-- 3. ALRENDSZER 1 -->
+    <a name="alrendszer-1"></a><h2>3. Felhasználó- és Jogosultságkezelő alrendszer modellje</h2>
+    <div class="content-box">
+        <a name="alr1-statikus"></a><h3>3.1. Statikus modell</h3>
+        <h4>3.1.1. Kapcsolatok pontosítása</h4>
+        <p>A kezdeti diagramhoz képest pontosítottuk a multiplicitásokat és a szerepköröket: egy <code>Felhasznalo</code> több <code>HitelesitesiMunkamenet</code> és <code>KetlepcsosKod</code> példányhoz is tartozhat az idő előrehaladtával (1 – 0..*), azonban egyszerre csak a legutolsó, még nem használt 2FA kód érvényes. Minden <code>AuditNaploBejegyzes</code> pontosan egy <code>Felhasznalo</code> műveletéhez köthető (1 – 0..*).</p>
+
+        <h4>3.1.2. Attribútumok azonosítása</h4>
+        <p>A biztonsági előírások (Bcrypt, 3 sikertelen kísérlet utáni zárolás, JWT lejárat, IP-cím naplózása) alapján felvettük a <code>jelszoHash</code>, <code>hibasProbalkozasok</code>, <code>statusz</code>, <code>jwtToken</code>, <code>lejaratIdeje</code> és <code>ipCim</code> attribútumokat.</p>
+
+        <h4>3.1.3. Bázisosztályok keresése</h4>
+        <p>Mivel az <code>Ugyfel</code>, a <code>BankiUgyintezo</code> és a <code>Rendszeradminisztrator</code> egyaránt rendelkezik névvel, e-mail címmel, jelszóval és bejelentkezési státusszal, ezeket az attribútumokat és a belépési logikát kiemeltük az absztrakt <code>Felhasznalo</code> bázisosztályba. Az ügyfelek közös jellemzőit (ügyfél-azonosító, telefonszám, lakcím/székhely) az <code>Ugyfel</code> osztály fogja össze, amelyből a <code>LakossagiUgyfel</code> és a <code>VallalatiUgyfel</code> származik.</p>
+
+        <a name="alr1-dinamikus"></a><h3>3.2. Dinamikus modell</h3>
+        <p>Az <strong>UC-01: Bejelentkezés és 2FA hitelesítés</strong> használati eset normál és hibakezelési folyamatát az alábbi szekvenciadiagram mutatja be:</p>
+        <p class="center-text">
+            <img src="diagrams/seq_uc01_bejelentkezes.svg" alt="UC-01 Bejelentkezés szekvenciadiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+        <p>A <code>Felhasznalo</code> fiókstátuszának életciklusát az alábbi állapotdiagram szemlélteti:</p>
+        <p class="center-text">
+            <img src="diagrams/state_felhasznalo.svg" alt="Felhasznalo állapotdiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr1-funkcionalis"></a><h3>3.3. Funkcionális modell</h3>
+        <p>A kétlépcsős azonosítás és a fiókzárolás döntési logikáját (megbízható böngésző ellenőrzése, Bcrypt összehasonlítás, számláló növelése és audit naplózás) az alábbi aktivitásdiagram írja le:</p>
+        <p class="center-text">
+            <img src="diagrams/act_uc01_2fa.svg" alt="UC-01 2FA aktivitásdiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr1-operaciok"></a><h3>3.4. Operációk azonosítása</h3>
+        <p>A szekvencia- és aktivitásdiagramok alapján azonosítottuk a <code>jelszoEllenorzes()</code>, <code>fiokZarol()</code>, <code>fiokFelold()</code>, <code>ervenyesit()</code> (2FA), <code>ervenyesE()</code> (JWT), valamint az audit naplóbejegyzést létrehozó <code>rogzit()</code> operációkat.</p>
+
+        <a name="alr1-osztalydiagram"></a><h3>3.5. Az analízis modell osztálydiagramja</h3>
+        <p class="center-text">
+            <img src="diagrams/anal_alrendszer1_auth.svg" alt="Felhasználó- és Jogosultságkezelő osztálydiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr1-osztalylista"></a><h3>3.6. Az analízis modell osztályainak listája</h3>
+
+        <h4>3.6.1. Felhasznalo</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Absztrakt ősosztály, amely a rendszer összes szereplőjének azonosítási adatait, Bcrypt jelszólenyomatát és fiókállapotát kezeli.</li>
+            <li><strong>együttműködők:</strong> HitelesitesiMunkamenet, KetlepcsosKod, AuditNaploBejegyzes</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Egyedi adatbázis-azonosító.</td> </tr>
+            <tr> <td>nev</td> <td>String</td> <td>A felhasználó teljes neve.</td> </tr>
+            <tr> <td>email</td> <td>String</td> <td>Bejelentkezéshez használt egyedi e-mail cím.</td> </tr>
+            <tr> <td>jelszoHash</td> <td>String</td> <td>Bcrypt algoritmussal (salt &ge; 12) tárolt jelszólenyomat.</td> </tr>
+            <tr> <td>statusz</td> <td>FiokStatusz</td> <td>A fiók állapota (AKTIV, ZAROLT, INAKTIV).</td> </tr>
+            <tr> <td>hibasProbalkozasok</td> <td>int</td> <td>Egymást követő sikertelen belépési kísérletek száma.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>jelszoEllenorzes</td> <td>nyersJelszo: String</td> <td>Ellenőrzi a megadott jelszót a tárolt Bcrypt hash alapján; 3 hiba után zárol.</td> </tr>
+            <tr> <td>fiokZarol</td> <td>-</td> <td>A fiók státuszát ZAROLT állapotba állítja.</td> </tr>
+            <tr> <td>fiokFelold</td> <td>-</td> <td>Visszaállítja az AKTIV státuszt és nullázza a hibaszámlálót.</td> </tr>
+        </table>
+
+        <h4>3.6.2. Ugyfel</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Az ügyfelek közös tulajdonságait tárolja és biztosítja a saját bankszámlák elérését.</li>
+            <li><strong>együttműködők:</strong> Felhasznalo, Bankszamla, Hitelkerelem</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>ugyfelAzonosito</td> <td>String</td> <td>Egyedi banki ügyfél-azonosító kód.</td> </tr>
+            <tr> <td>telefonszam</td> <td>String</td> <td>2FA és értesítések küldésére szolgáló telefonszám.</td> </tr>
+            <tr> <td>cim</td> <td>String</td> <td>Lakcím vagy céges székhely.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>szamlakLekerdezese</td> <td>-</td> <td>Visszaadja az ügyfélhez tartozó aktív bankszámlák listáját.</td> </tr>
+        </table>
+
+        <h4>3.6.3. LakossagiUgyfel</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Magánszemély ügyfél reprezentálása, aki saját bankkártyákat és limiteket kezelhet.</li>
+            <li><strong>együttműködők:</strong> Ugyfel, Bankkartya</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>szemelyiIgazolvanySzam</td> <td>String</td> <td>Az ügyfél személyazonosító okmányának száma.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>kartyakLekerdezese</td> <td>-</td> <td>Lekéri a lakossági ügyfél számláihoz kapcsolt bankkártyákat.</td> </tr>
+        </table>
+
+        <h4>3.6.4. VallalatiUgyfel</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Céges ügyfél reprezentálása, aki tömeges átutalási csomagokat indíthat.</li>
+            <li><strong>együttműködők:</strong> Ugyfel, TomegesAtutalasCsomag</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>cegnev</td> <td>String</td> <td>A vállalkozás hivatalos neve.</td> </tr>
+            <tr> <td>adoszam</td> <td>String</td> <td>A vállalkozás adószáma.</td> </tr>
+            <tr> <td>cegjegyzekszam</td> <td>String</td> <td>A vállalkozás cégjegyzékszáma.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>tomegesUtalasInditasa</td> <td>csomag: TomegesAtutalasCsomag</td> <td>Elindítja egy jóváhagyott tömeges utalási csomag feldolgozását.</td> </tr>
+        </table>
+
+        <h4>3.6.5. BankiUgyintezo</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> A bank belső munkatársa, aki hitelkérelmeket bírál el és naplókat ellenőriz.</li>
+            <li><strong>együttműködők:</strong> Felhasznalo, HitelBiralat, AuditNaploBejegyzes</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>dolgozoiAzonosito</td> <td>String</td> <td>Belső banki munkatárs-azonosító.</td> </tr>
+            <tr> <td>osztaly</td> <td>String</td> <td>Az ügyintéző szervezeti egysége (pl. Hitelbírálat).</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>hitelkerelemBiralat</td> <td>kerelemId: Long, dontes: BiralatDontes</td> <td>Rögzíti a hitelkérelemre vonatkozó döntést és elindítja a folyósítást.</td> </tr>
+        </table>
+
+        <h4>3.6.6. Rendszeradminisztrator</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> A felhasználói fiókok, jogosultságok és a rendszerbiztonsági beállítások karbantartása.</li>
+            <li><strong>együttműködők:</strong> Felhasznalo, AuditNaploBejegyzes</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>adminSzint</td> <td>int</td> <td>Adminisztrátori jogosultsági szint.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>jogosultsagModositasa</td> <td>felhasznaloId: Long, szerep: String</td> <td>Módosítja a kiválasztott felhasználó szerepkörét (saját jog visszavonása tiltott).</td> </tr>
+            <tr> <td>fiokStatuszModositasa</td> <td>felhasznaloId: Long, statusz: FiokStatusz</td> <td>Aktiválja, inaktiválja vagy feloldja a felhasználói fiókot.</td> </tr>
+        </table>
+
+        <h4>3.6.7. HitelesitesiMunkamenet</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Állapotmentes JWT alapú bejelentkezési munkamenet kezelése.</li>
+            <li><strong>együttműködők:</strong> Felhasznalo</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>tokenId</td> <td>String</td> <td>A token egyedi azonosítója (jti).</td> </tr>
+            <tr> <td>jwtToken</td> <td>String</td> <td>HMAC SHA-256 aláírt JWT karakterlánc.</td> </tr>
+            <tr> <td>lejaratIdeje</td> <td>DateTime</td> <td>A token érvényességének lejárati időpontja.</td> </tr>
+            <tr> <td>ipCim</td> <td>String</td> <td>A kliens IP-címe a belépéskor.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>ervenyesE</td> <td>-</td> <td>Ellenőrzi, hogy a token nem járt-e le és nincs-e visszavonva.</td> </tr>
+            <tr> <td>ervenytelenit</td> <td>-</td> <td>Kijelentkezéskor érvényteleníti a munkamenetet.</td> </tr>
+        </table>
+
+        <h4>3.6.8. KetlepcsosKod</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> A 2FA belépéshez szükséges egyszer használatos 6 jegyű kód tárolása és validálása.</li>
+            <li><strong>együttműködők:</strong> Felhasznalo</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Egyedi azonosító.</td> </tr>
+            <tr> <td>kod</td> <td>String</td> <td>6 számjegyű ellenőrző kód.</td> </tr>
+            <tr> <td>lejarat</td> <td>DateTime</td> <td>A kód érvényességi határideje.</td> </tr>
+            <tr> <td>felhasznalt</td> <td>boolean</td> <td>Jelzi, hogy a kódot már felhasználták-e.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>ervenyesit</td> <td>beirtKod: String</td> <td>Összeveti a beírt kódot, ellenőrzi a lejáratot és felhasználtnak jelöli.</td> </tr>
+        </table>
+
+        <h4>3.6.9. AuditNaploBejegyzes</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Biztonsági és pénzügyi események megváltoztathatatlan (csak olvasható) rögzítése.</li>
+            <li><strong>együttműködők:</strong> Felhasznalo, BankiUgyintezo, Rendszeradminisztrator</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Egyedi naplórekord-azonosító.</td> </tr>
+            <tr> <td>idobelyeg</td> <td>DateTime</td> <td>Az esemény bekövetkezésének pontos ideje.</td> </tr>
+            <tr> <td>esemenyTipus</td> <td>String</td> <td>Eseménykód (pl. BEJELENTKEZES, ATUTALAS, LIMIT_MODOSITAS).</td> </tr>
+            <tr> <td>ipCim</td> <td>String</td> <td>A műveletet kezdeményező kliens IP-címe.</td> </tr>
+            <tr> <td>reszletek</td> <td>String</td> <td>Szöveges vagy JSON leírás az esemény paramétereiről.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>rogzit</td> <td>esemeny: String, felhasznaloId: Long, ip: String</td> <td>Új, utólag nem módosítható naplóbejegyzést ment az adatbázisba.</td> </tr>
+        </table>
+    </div>
+
+    <!-- 4. ALRENDSZER 2 -->
+    <a name="alrendszer-2"></a><h2>4. Számla- és Pénzforgalmi alrendszer modellje</h2>
+    <div class="content-box">
+        <a name="alr2-statikus"></a><h3>4.1. Statikus modell</h3>
+        <h4>4.1.1. Kapcsolatok pontosítása</h4>
+        <p>Egy <code>Ugyfel</code> legalább egy <code>Bankszamla</code> tulajdonosa (1 – 1..*). A <code>TomegesAtutalasCsomag</code> és a <code>TomegesAtutalasTetel</code> között erős kompozíciós kapcsolat (1 – 1..*) áll fenn, mivel a tételek a csomag nélkül nem értelmezhetők. Minden végrehajtott tétel létrehoz egy könyvelt <code>Tranzakcio</code> rekordot.</p>
+
+        <h4>4.1.2. Attribútumok azonosítása</h4>
+        <p>Az SRS szerint meg kell különböztetni az <code>elerhetoEgyenleg</code> és a <code>konyveltEgyenleg</code> értékeket, valamint a <code>Bankkartya</code> napi vásárlási és készpénzfelvételi limitjeit. A kártyaszám biztonsági okokból maszkolt formában (<code>kartyaSzamMaszkolt</code>) jelenik meg.</p>
+
+        <h4>4.1.3. Bázisosztályok keresése</h4>
+        <p>A számlamozgások közös mezőit (összeg, devizanem, közlemény, időbélyeg, státusz) és az ACID könyvelési/visszagörgetési logikát a <code>Tranzakcio</code> absztrakt bázisosztályba emeltük ki, amelyből az <code>EsetiAtutalas</code> származik.</p>
+
+        <a name="alr2-dinamikus"></a><h3>4.2. Dinamikus modell</h3>
+        <p>Az <strong>UC-03: Belföldi eseti átutalás indítása</strong> folyamatát (beleértve a CDV-ellenőrzést, a fedezetvizsgálatot, az opcionális devizakonverziót és az audit naplózást) az alábbi szekvenciadiagram mutatja be:</p>
+        <p class="center-text">
+            <img src="diagrams/seq_uc03_atutalas.svg" alt="UC-03 Eseti átutalás szekvenciadiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+        <p>A <code>Bankkartya</code> állapotváltozásait (aktív, ideiglenesen zárolt, véglegesen letiltott, lejárt) az alábbi állapotdiagram írja le:</p>
+        <p class="center-text">
+            <img src="diagrams/state_bankkartya.svg" alt="Bankkártya állapotdiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr2-funkcionalis"></a><h3>4.3. Funkcionális modell</h3>
+        <p>A tömeges átutalási csomag (UC-04) feldolgozásának fő lépései:</p>
+        <ol>
+            <li>A vállalati ügyfél feltölti a CSV fájlt vagy táblázatban rögzíti a tételeket.</li>
+            <li>A <code>TomegesAtutalasCsomag.csvFeldolgozas()</code> minden sorra létrehoz egy <code>TomegesAtutalasTetel</code> objektumot, és meghívja a <code>validal()</code> metódust (24 jegyű CDV-ellenőrzés).</li>
+            <li>A hibás tételek javíthatók vagy kihagyhatók; a helyes tételek összege adja az <code>osszOsszeg</code> értéket.</li>
+            <li>Az <code>osszesitettFedezetEllenorzes()</code> ellenőrzi, hogy a forrásszámla elérhető egyenlege fedezi-e a teljes csomagot.</li>
+            <li>Jóváhagyás után a <code>kotegeletVegrehajtas()</code> egy adatbázis-tranzakcióban könyveli az egyes tételeket és audit naplót készít.</li>
+        </ol>
+
+        <a name="alr2-operaciok"></a><h3>4.4. Operációk azonosítása</h3>
+        <p>Azonosított fő műveletek: <code>fedezetEllenorzes()</code>, <code>terhel()</code>, <code>jovair()</code>, <code>cdvEllenorzes()</code>, <code>konyvel()</code>, <code>visszagorget()</code>, <code>pdfGeneralas()</code>, <code>limitModositasa()</code>, <code>zarolas()</code>.</p>
+
+        <a name="alr2-osztalydiagram"></a><h3>4.5. Az analízis modell osztálydiagramja</h3>
+        <p class="center-text">
+            <img src="diagrams/anal_alrendszer2_szamla.svg" alt="Számla- és Pénzforgalmi alrendszer osztálydiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr2-osztalylista"></a><h3>4.6. Az analízis modell osztályainak listája</h3>
+
+        <h4>4.6.1. Bankszamla</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Az ügyfél bankszámlájának egyenlegét, devizanemét és státuszát kezeli, valamint végrehajtja a terheléseket és jóváírásokat.</li>
+            <li><strong>együttműködők:</strong> Ugyfel, Tranzakcio, Bankkartya, Szamlakivonat, TomegesAtutalasCsomag, Hitelkerelem</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Egyedi adatbázis-azonosító.</td> </tr>
+            <tr> <td>szamlaszam</td> <td>String</td> <td>24 jegyű belföldi számlaszám.</td> </tr>
+            <tr> <td>devizanem</td> <td>String</td> <td>A számla pénzneme (HUF, EUR, USD).</td> </tr>
+            <tr> <td>elerhetoEgyenleg</td> <td>Decimal</td> <td>A szabadon elkölthető egyenleg.</td> </tr>
+            <tr> <td>konyveltEgyenleg</td> <td>Decimal</td> <td>A könyvelt tételek szerinti egyenleg.</td> </tr>
+            <tr> <td>statusz</td> <td>SzamlaStatusz</td> <td>Számla állapota (AKTIV, ZAROLT, INKASSZO_ALATT).</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>fedezetEllenorzes</td> <td>osszeg: Decimal</td> <td>Megvizsgálja, hogy a számla aktív-e és van-e elegendő szabad egyenleg.</td> </tr>
+            <tr> <td>terhel</td> <td>osszeg: Decimal</td> <td>Csökkenti a számla egyenlegét a megadott összeggel.</td> </tr>
+            <tr> <td>jovair</td> <td>osszeg: Decimal</td> <td>Növeli a számla egyenlegét a megadott összeggel.</td> </tr>
+        </table>
+
+        <h4>4.6.2. Tranzakcio</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Absztrakt osztály, amely minden számlaművelet közös adatait és ACID könyvelési műveleteit fogja össze.</li>
+            <li><strong>együttműködők:</strong> Bankszamla, TomegesAtutalasTetel</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Egyedi tranzakció-azonosító.</td> </tr>
+            <tr> <td>osszeg</td> <td>Decimal</td> <td>A tranzakció összege.</td> </tr>
+            <tr> <td>devizanem</td> <td>String</td> <td>A tranzakció pénzneme.</td> </tr>
+            <tr> <td>kozlemeny</td> <td>String</td> <td>Opcionális közlemény szöveg.</td> </tr>
+            <tr> <td>idobelyeg</td> <td>DateTime</td> <td>A könyvelés időpontja.</td> </tr>
+            <tr> <td>statusz</td> <td>TranzakcioStatusz</td> <td>FELDOLGOZAS_ALATT, KONYVELT, ELUTASITVA.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>konyvel</td> <td>-</td> <td>Véglegesíti a tranzakciót az adatbázisban.</td> </tr>
+            <tr> <td>visszagorget</td> <td>-</td> <td>Hiba esetén visszavonja a terhelést/jóváírást (rollback).</td> </tr>
+        </table>
+
+        <h4>4.6.3. EsetiAtutalas</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Belföldi eseti átutalási megbízás kezelése és számlaszám-validációja.</li>
+            <li><strong>együttműködők:</strong> Tranzakcio, DevizaKonverzio</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>kedvezmenyezettNev</td> <td>String</td> <td>A fogadó fél neve.</td> </tr>
+            <tr> <td>celSzamlaszam</td> <td>String</td> <td>A kedvezményezett 24 jegyű számlaszáma.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>cdvEllenorzes</td> <td>szamlaszam: String</td> <td>Lefuttatja a CDV ellenőrző algoritmust a célszámlaszámon.</td> </tr>
+        </table>
+
+        <h4>4.6.4. TomegesAtutalasCsomag</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Vállalati kötegelt átutalások feldolgozása, összesített fedezetvizsgálata és indítása.</li>
+            <li><strong>együttműködők:</strong> VallalatiUgyfel, Bankszamla, TomegesAtutalasTetel</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Csomag egyedi azonosítója.</td> </tr>
+            <tr> <td>fajlNev</td> <td>String</td> <td>A feltöltött CSV állomány neve.</td> </tr>
+            <tr> <td>osszOsszeg</td> <td>Decimal</td> <td>Az érvényes tételek végösszege.</td> </tr>
+            <tr> <td>tetelSzam</td> <td>int</td> <td>A csomagban lévő tételek darabszáma.</td> </tr>
+            <tr> <td>statusz</td> <td>CsomagStatusz</td> <td>FELTOLTVE, ELLENORIZVE, VEGREHAJTVA.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>csvFeldolgozas</td> <td>tartalom: String</td> <td>Beolvassa a CSV sorokat és létrehozza a tételobjektumokat.</td> </tr>
+            <tr> <td>osszesitettFedezetEllenorzes</td> <td>-</td> <td>Ellenőrzi, hogy a forrásszámlán megvan-e a teljes csomagösszeg.</td> </tr>
+            <tr> <td>kotegeletVegrehajtas</td> <td>-</td> <td>Tranzakciónként végrehajtja a jóváhagyott tételeket.</td> </tr>
+        </table>
+
+        <h4>4.6.5. TomegesAtutalasTetel</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Egy tömeges átutalási csomag egyedi sorának adatait és validációs eredményét tárolja.</li>
+            <li><strong>együttműködők:</strong> TomegesAtutalasCsomag, Tranzakcio</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Egyedi tétel-azonosító.</td> </tr>
+            <tr> <td>celSzamlaszam</td> <td>String</td> <td>Kedvezményezett számlaszáma.</td> </tr>
+            <tr> <td>kedvezmenyezettNev</td> <td>String</td> <td>Kedvezményezett neve.</td> </tr>
+            <tr> <td>osszeg</td> <td>Decimal</td> <td>Az utalandó összeg.</td> </tr>
+            <tr> <td>ervenyes</td> <td>boolean</td> <td>A formai és CDV-validáció eredménye.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>validal</td> <td>-</td> <td>Ellenőrzi a számlaszámot és a pozitív összeget.</td> </tr>
+        </table>
+
+        <h4>4.6.6. Szamlakivonat</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Adott hónapra vagy időszakra szóló hivatalos számlakivonat összeállítása és PDF exportálása.</li>
+            <li><strong>együttműködők:</strong> Bankszamla</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Kivonat azonosítója.</td> </tr>
+            <tr> <td>ev</td> <td>int</td> <td>A kivonat éve.</td> </tr>
+            <tr> <td>honap</td> <td>int</td> <td>A kivonat hónapja.</td> </tr>
+            <tr> <td>nyitoEgyenleg</td> <td>Decimal</td> <td>Időszak eleji egyenleg.</td> </tr>
+            <tr> <td>zaroEgyenleg</td> <td>Decimal</td> <td>Időszak végi egyenleg.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>pdfGeneralas</td> <td>-</td> <td>Összeállítja és bájtfolyamként visszaadja a formázott PDF kivonatot.</td> </tr>
+        </table>
+
+        <h4>4.6.7. Bankkartya</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Lakossági bankkártya adatainak, napi limitjeinek és tiltási státuszának kezelése.</li>
+            <li><strong>együttműködők:</strong> LakossagiUgyfel, Bankszamla</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Kártya azonosítója.</td> </tr>
+            <tr> <td>kartyaSzamMaszkolt</td> <td>String</td> <td>Maszkolt kártyaszám (pl. **** **** **** 1234).</td> </tr>
+            <tr> <td>lejarat</td> <td>Date</td> <td>A kártya lejárati dátuma.</td> </tr>
+            <tr> <td>napiVasarlasiLimit</td> <td>Decimal</td> <td>Napi maximum vásárlási keret.</td> </tr>
+            <tr> <td>napiKpLimit</td> <td>Decimal</td> <td>Napi maximum készpénzfelvételi keret.</td> </tr>
+            <tr> <td>statusz</td> <td>KartyaStatusz</td> <td>AKTIV, IDEIGLENESEN_ZAROLT, VEGL_LETILTVA, LEJART.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>limitModositasa</td> <td>vasarlas: Decimal, kp: Decimal</td> <td>Beállítja az új napi limiteket a banki maximumon belül.</td> </tr>
+            <tr> <td>zarolas</td> <td>-</td> <td>Azonnal ideiglenesen zárolja a kártyát.</td> </tr>
+        </table>
+    </div>
+
+    <!-- 5. ALRENDSZER 3 -->
+    <a name="alrendszer-3"></a><h2>5. Deviza- és Árfolyamkezelő alrendszer modellje</h2>
+    <div class="content-box">
+        <a name="alr3-statikus"></a><h3>5.1. Statikus modell</h3>
+        <h4>5.1.1. Kapcsolatok pontosítása</h4>
+        <p>Az <code>ArfolyamFrissitoSzolgaltatas</code> egyetlen <code>KulsoArfolyamKliens</code> segítségével kommunikál a külső REST API-val, és időbélyeggel ellátott <code>DevizaArfolyam</code> rekordokat hoz létre. Minden <code>DevizaKonverzio</code> az adott pillanatban érvényes <code>DevizaArfolyam</code> rekordra támaszkodik.</p>
+
+        <h4>5.1.2. Attribútumok azonosítása</h4>
+        <p>Az UC-07 és UC-10 alapján felvettük a <code>veteliArfolyam</code>, <code>eladasiArfolyam</code>, <code>kozepArfolyam</code> és <code>frissitesIdeje</code> mezőket, valamint a marzsszámításhoz szükséges <code>marzsSzazalek</code> paramétert.</p>
+
+        <h4>5.1.3. Bázisosztályok keresése</h4>
+        <p>Az alrendszer osztályai eltérő szerepkörűek (adatentitás, időzített szolgáltatás, külső kliens), így nem indokolt közös bázisosztály bevezetése.</p>
+
+        <a name="alr3-dinamikus"></a><h3>5.2. Dinamikus modell</h3>
+        <p>Az <strong>UC-10: Árfolyamok automatikus frissítése</strong> folyamatot (beleértve a külső API hiba esetén történő fallback működést) az alábbi szekvenciadiagram szemlélteti:</p>
+        <p class="center-text">
+            <img src="diagrams/seq_uc10_arfolyam.svg" alt="UC-10 Árfolyamfrissítés szekvenciadiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr3-funkcionalis"></a><h3>5.3. Funkcionális modell</h3>
+        <p>Ha egy átutalásnál a forrásszámla és a céldeviza eltér (<code>&lt;&lt;extend&gt;&gt; Devizakonverzió</code>), a <code>DevizaKonverzio.atvalt()</code> lekéri a legfrissebb érvényes <code>DevizaArfolyam</code> eladási árfolyamát, kiszámítja az átváltott összeget, és a bizonylaton mindkét értéket rögzíti. Külső API kiesés esetén a rendszer az utolsó érvényes árfolyamot használja és riasztást naplóz.</p>
+
+        <a name="alr3-operaciok"></a><h3>5.4. Operációk azonosítása</h3>
+        <p>Azonosított operációk: <code>orankentiFrissites()</code>, <code>marzsSzamitas()</code>, <code>lekerAktualisArfolyamok()</code>, <code>atvalt()</code>, <code>napiValtozasSzazalek()</code>.</p>
+
+        <a name="alr3-osztalydiagram"></a><h3>5.5. Az analízis modell osztálydiagramja</h3>
+        <p class="center-text">
+            <img src="diagrams/anal_alrendszer3_deviza.svg" alt="Deviza- és Árfolyamkezelő alrendszer osztálydiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr3-osztalylista"></a><h3>5.6. Az analízis modell osztályainak listája</h3>
+
+        <h4>5.6.1. DevizaArfolyam</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Devizapárok aktuális és historikus árfolyamadatainak tárolása.</li>
+            <li><strong>együttműködők:</strong> ArfolyamFrissitoSzolgaltatas, DevizaKonverzio</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Egyedi azonosító.</td> </tr>
+            <tr> <td>forrasDeviza</td> <td>String</td> <td>Alap devizanem (pl. EUR, USD, CHF, GBP).</td> </tr>
+            <tr> <td>celDeviza</td> <td>String</td> <td>Cél devizanem (pl. HUF).</td> </tr>
+            <tr> <td>veteliArfolyam</td> <td>Decimal</td> <td>Banki vételi árfolyam.</td> </tr>
+            <tr> <td>eladasiArfolyam</td> <td>Decimal</td> <td>Banki eladási árfolyam.</td> </tr>
+            <tr> <td>kozepArfolyam</td> <td>Decimal</td> <td>Piaci középárfolyam.</td> </tr>
+            <tr> <td>frissitesIdeje</td> <td>DateTime</td> <td>Az árfolyam rögzítésének időbélyege.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>napiValtozasSzazalek</td> <td>-</td> <td>Kiszámítja az előző napi záróárhoz viszonyított százalékos eltérést.</td> </tr>
+        </table>
+
+        <h4>5.6.2. ArfolyamFrissitoSzolgaltatas</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Ütemezett árfolyam-szinkronizáció vezérlése és a banki marzs alkalmazása.</li>
+            <li><strong>együttműködők:</strong> KulsoArfolyamKliens, DevizaArfolyam, AuditNaploBejegyzes</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>marzsSzazalek</td> <td>Decimal</td> <td>A banki vételi/eladási sávot meghatározó marzs.</td> </tr>
+            <tr> <td>utolsoSikeresFrissites</td> <td>DateTime</td> <td>A legutóbbi sikeres szinkronizáció időpontja.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>orankentiFrissites</td> <td>-</td> <td>Óránként lefutva lekéri és elmenti az új árfolyamokat.</td> </tr>
+            <tr> <td>marzsSzamitas</td> <td>kozep: Decimal</td> <td>Kiszámítja a vételi és eladási értéket a középárfolyamból.</td> </tr>
+        </table>
+
+        <h4>5.6.3. KulsoArfolyamKliens</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> HTTPS REST kommunikáció lebonyolítása a külső árfolyam-szolgáltató API-val.</li>
+            <li><strong>együttműködők:</strong> ArfolyamFrissitoSzolgaltatas</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>apiVegpontUrl</td> <td>String</td> <td>A külső REST API címe.</td> </tr>
+            <tr> <td>timeoutMs</td> <td>int</td> <td>Hálózati időtúllépési határ milliszekundumban.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>lekerAktualisArfolyamok</td> <td>-</td> <td>HTTPS GET hívást indít és feldolgozza a JSON választ.</td> </tr>
+        </table>
+
+        <h4>5.6.4. DevizaKonverzio</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Eltérő devizanemű átutalások átváltásának kiszámítása és rögzítése.</li>
+            <li><strong>együttműködők:</strong> DevizaArfolyam, EsetiAtutalas</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Konverzió azonosítója.</td> </tr>
+            <tr> <td>forrasOsszeg</td> <td>Decimal</td> <td>Átváltandó összeg.</td> </tr>
+            <tr> <td>celOsszeg</td> <td>Decimal</td> <td>Átváltott összeg.</td> </tr>
+            <tr> <td>alkalmazottArfolyam</td> <td>Decimal</td> <td>A műveletkor használt eladási árfolyam.</td> </tr>
+            <tr> <td>idobelyeg</td> <td>DateTime</td> <td>A konverzió időpontja.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>atvalt</td> <td>osszeg: Decimal, forras: String, cel: String</td> <td>Kiszámítja az átváltott összeget az aktuális árfolyam alapján.</td> </tr>
+        </table>
+    </div>
+
+    <!-- 6. ALRENDSZER 4 -->
+    <a name="alrendszer-4"></a><h2>6. Hiteligénylési és Bírálati alrendszer modellje</h2>
+    <div class="content-box">
+        <a name="alr4-statikus"></a><h3>6.1. Statikus modell</h3>
+        <h4>6.1.1. Kapcsolatok pontosítása</h4>
+        <p>Egy <code>Ugyfel</code> több <code>Hitelkerelem</code> példányt is benyújthat. Minden <code>Hitelkerelem</code> legfeljebb egy <code>HitelBiralat</code> objektumhoz kapcsolódik (1 – 0..1), és csak a jóváhagyott bírálat eredményez egy <code>HitelSzerzodes</code> példányt (0..1 – 0..1).</p>
+
+        <h4>6.1.2. Attribútumok azonosítása</h4>
+        <p>Az UC-08 és UC-09 alapján a <code>Hitelkerelem</code> tartalmazza az <code>igenyeltOsszeg</code>, <code>futamidoHonap</code>, <code>haviNettoJovedelem</code> és <code>munkaltatoNeve</code> mezőket, míg a <code>HitelBiralat</code> a <code>dontes</code>, <code>indoklas</code> és <code>digitalisAlairas</code> mezőket.</p>
+
+        <h4>6.1.3. Bázisosztályok keresése</h4>
+        <p>A négy osztály eltérő életciklusú és felelősségű (kérelem, kalkulátor, bírálat, szerződés), így közös bázisosztály nem szükséges.</p>
+
+        <a name="alr4-dinamikus"></a><h3>6.2. Dinamikus modell</h3>
+        <p>Az <strong>UC-09: Hitelkérelem elbírálása</strong> folyamatát az alábbi szekvenciadiagram mutatja be:</p>
+        <p class="center-text">
+            <img src="diagrams/seq_uc09_hitelbiralat.svg" alt="UC-09 Hitelkérelem elbírálása szekvenciadiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+        <p>A <code>Hitelkerelem</code> lehetséges állapotait és átmeneteit az alábbi állapotdiagram írja le:</p>
+        <p class="center-text">
+            <img src="diagrams/state_hitelkerelem.svg" alt="Hitelkérelem állapotdiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr4-funkcionalis"></a><h3>6.3. Funkcionális modell</h3>
+        <p>A hiteligénylés során a <code>HitelKalkulator</code> valós időben számolja a várható havi törlesztőrészletet és a THM-et. Beküldés előtt a <code>Hitelkerelem.jtmEllenorzes()</code> megvizsgálja, hogy a törlesztőrészlet nem haladja-e meg a jogszabályi jövedelemarányos törlesztési mutatót (JTM). Jóváhagyáskor a rendszer ellenőrzi, hogy az ügyfél célszámlája nem került-e zárolásra, majd létrehozza a <code>HitelSzerzodes</code> rekordot és jóváírja az összeget.</p>
+
+        <a name="alr4-operaciok"></a><h3>6.4. Operációk azonosítása</h3>
+        <p>Azonosított operációk: <code>piszkozatMentese()</code>, <code>bekuldes()</code>, <code>jtmEllenorzes()</code>, <code>haviTorlesztoSzamitas()</code>, <code>thmSzamitas()</code>, <code>veglegesit()</code>, <code>folyositasInditasa()</code>.</p>
+
+        <a name="alr4-osztalydiagram"></a><h3>6.5. Az analízis modell osztálydiagramja</h3>
+        <p class="center-text">
+            <img src="diagrams/anal_alrendszer4_hitel.svg" alt="Hiteligénylési és Bírálati alrendszer osztálydiagram" style="max-width: 100%; height: auto; border: 1px solid #555; margin: 15px auto; display: block; background-color: #ffffff; padding: 10px;">
+        </p>
+
+        <a name="alr4-osztalylista"></a><h3>6.6. Az analízis modell osztályainak listája</h3>
+
+        <h4>6.6.1. Hitelkerelem</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Az ügyfél által kitöltött digitális hiteligénylés adatainak és bírálati státuszának kezelése.</li>
+            <li><strong>együttműködők:</strong> Ugyfel, Bankszamla, HitelKalkulator, HitelBiralat</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>A hitelkérelem egyedi azonosítója.</td> </tr>
+            <tr> <td>igenyeltOsszeg</td> <td>Decimal</td> <td>Az igényelt hitel összege.</td> </tr>
+            <tr> <td>futamidoHonap</td> <td>int</td> <td>A választott futamidő hónapokban.</td> </tr>
+            <tr> <td>haviNettoJovedelem</td> <td>Decimal</td> <td>Az igénylő igazolt havi nettó jövedelme.</td> </tr>
+            <tr> <td>munkaltatoNeve</td> <td>String</td> <td>A munkáltató megnevezése.</td> </tr>
+            <tr> <td>statusz</td> <td>KerelemStatusz</td> <td>PISZKOZAT, ELBIRALASRA_VAR, HIANYPOTLAS, JOVAHAGYVA, ELUTASITVA.</td> </tr>
+            <tr> <td>benyujtasIdeje</td> <td>DateTime</td> <td>A végleges beküldés időpontja.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>piszkozatMentese</td> <td>-</td> <td>Elmenti a félig kitöltött kérelmet későbbi folytatáshoz.</td> </tr>
+            <tr> <td>bekuldes</td> <td>-</td> <td>Validálás után elbírálásra váró státuszba állítja a kérelmet.</td> </tr>
+            <tr> <td>jtmEllenorzes</td> <td>torleszto: Decimal</td> <td>Ellenőrzi a jövedelemarányos törlesztési mutató teljesülését.</td> </tr>
+        </table>
+
+        <h4>6.6.2. HitelKalkulator</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Pénzügyi képletek alapján kiszámítja a havi törlesztőrészletet és a THM-et.</li>
+            <li><strong>együttműködők:</strong> Hitelkerelem</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>kamatLab</td> <td>Decimal</td> <td>Éves ügyleti kamatláb.</td> </tr>
+            <tr> <td>thm</td> <td>Decimal</td> <td>Teljes Hiteldíj Mutató.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>haviTorlesztoSzamitas</td> <td>osszeg: Decimal, honap: int</td> <td>Annuitásos képlettel kiszámítja a havi törlesztőt.</td> </tr>
+            <tr> <td>thmSzamitas</td> <td>osszeg: Decimal, honap: int</td> <td>Kiszámítja a teljes hiteldíj mutatót.</td> </tr>
+        </table>
+
+        <h4>6.6.3. HitelBiralat</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Az ügyintézői döntés, az indoklás és a digitális aláírás rögzítése.</li>
+            <li><strong>együttműködők:</strong> BankiUgyintezo, Hitelkerelem, HitelSzerzodes</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Bírálat azonosítója.</td> </tr>
+            <tr> <td>dontes</td> <td>BiralatDontes</td> <td>JOVAHAGYAS, ELUTASITAS, HIANYPOTLAS.</td> </tr>
+            <tr> <td>indoklas</td> <td>String</td> <td>Szöveges indoklás (elutasítás vagy hiánypótlás esetén kötelező).</td> </tr>
+            <tr> <td>biralatIdeje</td> <td>DateTime</td> <td>A döntés időpontja.</td> </tr>
+            <tr> <td>digitalisAlairas</td> <td>String</td> <td>Az ügyintéző megerősítő digitális aláírása.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>veglegesit</td> <td>-</td> <td>Lezárja a bírálatot és frissíti a kérelem státuszát.</td> </tr>
+        </table>
+
+        <h4>6.6.4. HitelSzerzodes</h4>
+        <ul>
+            <li><strong>felelőssége, feladata:</strong> Jóváhagyott hitel esetén a szerződéses adatok tárolása és a folyósítás elindítása.</li>
+            <li><strong>együttműködők:</strong> HitelBiralat, Bankszamla</li>
+            <li><strong>attribútumok:</strong></li>
+        </ul>
+        <table>
+            <tr> <th>Név</th> <th>Típus</th> <th>Leírás</th> </tr>
+            <tr> <td>id</td> <td>Long</td> <td>Szerződés azonosítója.</td> </tr>
+            <tr> <td>szerzodesSzam</td> <td>String</td> <td>Egyedi banki hitelszerződés-szám.</td> </tr>
+            <tr> <td>folyositasIdeje</td> <td>DateTime</td> <td>A hitelösszeg jóváírásának időpontja.</td> </tr>
+            <tr> <td>haviTorleszto</td> <td>Decimal</td> <td>Rögzített havi törlesztőrészlet.</td> </tr>
+            <tr> <td>futamidoHonap</td> <td>int</td> <td>Szerződéses futamidő hónapokban.</td> </tr>
+        </table>
+        <ul><li><strong>operációk:</strong></li></ul>
+        <table>
+            <tr> <th>Név</th> <th>Argumentumok</th> <th>Működése, feladata</th> </tr>
+            <tr> <td>folyositasInditasa</td> <td>-</td> <td>Jóváírja a hitelösszeget az ügyfél aktív bankszámláján.</td> </tr>
+        </table>
+    </div>
+
+    <!-- 7. MELLEKLETEK -->
+    <a name="mellekletek"></a><h2>7. Mellékletek</h2>
+    <div class="content-box">
+        <ul>
+            <li><strong>1. sz. Melléklet:</strong> A Heger Kft. (H3) Software követelmény specifikációja: <a href="srs_dokumentum.html">srs_dokumentum.html</a></li>
+            <li><strong>2. sz. Melléklet:</strong> A rendszer részletes Fogalomtára: <a href="szotar.html">szotar.html</a></li>
+            <li><strong>3. sz. Melléklet:</strong> A csapat munkáját nyilvántartó Munkanapló: <a href="munkanaplo.html">munkanaplo.html</a></li>
+            <li><strong>4. sz. Melléklet:</strong> Dr. Mileff Péter tantárgyi analízis modell sablonja (Miskolci Egyetem, IIT).</li>
+        </ul>
+    </div>
+
+    <div class="margin-block">
+        <a href="index.html">Vissza a főoldalra</a>
+    </div>
+</body>
+</html>
